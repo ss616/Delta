@@ -17,6 +17,7 @@ export default class App extends Component {
       <Provider store = {createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
         <Main />
       </Provider>
+      
     );
   }
 }
