@@ -5,7 +5,7 @@ import { LOGIN_USER_SUCCESS, LOGIN_USER_FAIL, LOGIN_USER,
 import axios from 'axios';
 import firebase from 'react-native-firebase';
 import { GoogleSignin } from 'react-native-google-signin';
-// import {BASE_URL} from '../const';
+import {BASE_URL} from '../const';
 
 
 export const loginUser = () => {
