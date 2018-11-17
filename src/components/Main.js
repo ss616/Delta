@@ -17,9 +17,12 @@ import HomeScreen from './screens/HomeScreen/HomeScreen';
 
 const Drawer = createDrawerNavigator({
         // For each screen that you can navigate to, create a new entry like this:
+        Access: {
+          screen: AccessGroupScreen,
+        },
         Home: {
             screen: HomeScreen,
-        }
+        },
     },
     {
       initialRouteName: 'Home',
@@ -32,9 +35,6 @@ const Drawer = createDrawerNavigator({
     
 // The Root of our Stack Navigation
 const RootStack = createStackNavigator({
-    // Preferences: {
-    //   screen: PreferencesScreen
-    // },  
     Access: {
       screen: AccessGroupScreen
     },

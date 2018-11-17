@@ -12,6 +12,7 @@ import { Container, Content, Fab, Icon, Button} from 'native-base';
 
 // Local Imports
 import HomeScreenHeader from './HomeScreenHeader';
+import CategoryView from './CategoryView';
 // import FeaturedView from './FeaturedView';
 // import RecommendedView from './RecommendedView';
 // import CategoryView from './CategoryView';
@@ -51,6 +52,7 @@ export default class HomeScreen extends Component {
                             vertical={true}
                             showsVerticalScrollIndicator={false}
                         >
+                        <CategoryView />
                             <Text>
                                 {type}
                             </Text>
