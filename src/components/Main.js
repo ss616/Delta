@@ -72,7 +72,7 @@ class Main extends Component {
         user,
       });
       if(user!=null && !this.props.loading){
-        this.props.postUser(user._user);
+        //this.props.postUser(user._user);
       }
     });
   }
