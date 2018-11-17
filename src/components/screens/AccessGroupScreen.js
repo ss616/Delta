@@ -12,8 +12,16 @@ import { Container, Content, Button, View, Text} from 'native-base';
 
 // Local Imports
 
-export default class HomeScreen extends Component {
+export default class AccessGroupScreen extends Component {
     
+    renderButton(text){
+        return(
+            <Button rounded onPress={() => this.props.navigation.navigate('Home', {type:text})} success style={styles.button}>
+                <Text >{text} </Text>
+            </Button>
+        );
+    }
+
     render() {
         console.log("HomeRender")
         return (
@@ -25,9 +33,9 @@ export default class HomeScreen extends Component {
                             flexDirection: 'column',
                             justifyContent: 'center',
                         }}>
-                            <Button rounded success style={styles.button}><Text >Shopper </Text></Button>
-                            <Button rounded success style={styles.button}><Text>Buyer </Text></Button>
-                            <Button rounded success style={styles.button}><Text>Admin </Text></Button>
+                            {this.renderButton('Shopper')}
+                            {this.renderButton('Buyer')}
+                            {this.renderButton('Admin')}
                         </View>
                     </SafeAreaView>
                 </Content>  

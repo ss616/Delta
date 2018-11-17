@@ -8,16 +8,17 @@ import { GoogleSignin } from 'react-native-google-signin';
 import { connect } from 'react-redux';
 
 // Local Imports
-import AccessGroup from './screens/AccessGroup';
 import LoginScreen from './screens/LoginScreen';
 import DrawerContent from './DrawerContent';
 import { postUser } from '../actions';
+import AccessGroupScreen from './screens/AccessGroupScreen';
+import HomeScreen from './screens/HomeScreen/HomeScreen';
 
 
 const Drawer = createDrawerNavigator({
         // For each screen that you can navigate to, create a new entry like this:
         Home: {
-            screen: AccessGroup,
+            screen: HomeScreen,
         }
     },
     {
@@ -34,11 +35,14 @@ const RootStack = createStackNavigator({
     // Preferences: {
     //   screen: PreferencesScreen
     // },  
+    Access: {
+      screen: AccessGroupScreen
+    },
     Drawer: { 
       screen: Drawer
     },
-    Access: {
-      screen: AccessGroup
+    Home: {
+      screen: HomeScreen
     },
   },
   {
