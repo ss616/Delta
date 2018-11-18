@@ -105,6 +105,7 @@ export default class HomeScreen extends Component {
                             showsVerticalScrollIndicator={false}
                         >
                             {viewSwitcher()}
+                            {/* nacho */}
                         </ScrollView>
                     </SafeAreaView>
                 </Content>

@@ -19,6 +19,7 @@ import ItemDetailScreen from './screens/ItemDetailScreen/ItemDetailScreen';
 import { StyleProvider } from 'native-base';
 import { setPrimaryColor } from '../settings';
 import EQuoteListScreen from './screens/EQuoteListScreen/EQuoteListScreen';
+// nacho
 
 
 const Drawer = createDrawerNavigator({
@@ -73,7 +74,7 @@ class Main extends Component {
     this.state = {
       loading: true,
     };
-    
+
   }
 
   /**
