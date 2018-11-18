@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 // Local Imports
 import getTheme from '../../native-base-theme/components';
 import LoginScreen from './screens/LoginScreen';
+import TestScreen from './screens/TestScreen';
 import DrawerContent from './DrawerContent';
 import { postUser } from '../actions';
 import AccessGroupScreen from './screens/AccessGroupScreen';
@@ -19,7 +20,6 @@ import { StyleProvider } from 'native-base';
 import { setPrimaryColor } from '../settings';
 import EQuoteListScreen from './screens/EQuoteListScreen/EQuoteListScreen';
 // nacho
-
 
 const Drawer = createDrawerNavigator({
         // For each screen that you can navigate to, create a new entry like this:
@@ -49,6 +49,9 @@ const RootStack = createStackNavigator({
     },
     Home: {
       screen: HomeScreen
+    },
+    Test: {
+      screen: TestScreen
     },
     ItemDetail: {
       screen: ItemDetailScreen 
