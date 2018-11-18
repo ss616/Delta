@@ -19,6 +19,10 @@ import Accordion from 'react-native-collapsible/Accordion';
 // Local Imports
 import HomeScreenHeader from './HomeScreenHeader';
 import CategoryView from './CategoryView';
+import EmployeeList from './EmployeeList';
+import { primaryColor } from '../../../settings';
+import FeaturedView from './FeaturedView';
+import viewSwitcher from './viewSwitcher';
 // import FeaturedView from './FeaturedView';
 // import RecommendedView from './RecommendedView';
 // import CategoryView from './CategoryView';
@@ -100,18 +104,8 @@ export default class HomeScreen extends Component {
                             vertical={true}
                             showsVerticalScrollIndicator={false}
                         >
-                        <CategoryView />
-                            <Text>
-                                {type}
-                            </Text>
-                        <Card style={styles.eQuoteContainer}>
-                            <ScrollView>
-                                {cards}
-                                <TouchableOpacity onPress={() => this.props.navigation.navigate('Test')}>
-                                    <Text style={styles.headerText}>View More</Text>
-                                </TouchableOpacity>
-                            </ScrollView>
-                        </Card>
+                            {viewSwitcher()}
+                            {/* nacho */}
                         </ScrollView>
                     </SafeAreaView>
                 </Content>
@@ -135,39 +129,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white',
         paddingTop: 20,
-    },
-    title: {
-        textAlign: 'center',
-        fontSize: 18,
-        fontWeight: '300',
-        marginBottom: 20,
-    },
-    header: {
-        padding: 10,
-    },
-    headerText: {
-        textAlign: 'center',
-        fontSize: 16,
-        fontWeight: '500',
-      },
-    content: {
-        padding: 20,
-        backgroundColor: '#fff',
-    },
-    active: {
-        backgroundColor: 'rgba(255,255,255,1)',
-    },
-    inactive: {
-        backgroundColor: 'rgba(245,252,255,1)',
-    },
-    selectors: {
-        marginBottom: 10,
-        flexDirection: 'row',
-        justifyContent: 'center',
-    },
-    selector: {
-        backgroundColor: '#F5FCFF',
-        padding: 10,
     },
     activeSelector: {
         fontWeight: 'bold',

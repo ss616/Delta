@@ -5,12 +5,16 @@ import {
     SafeAreaView,
     ScrollView,
     Image,
+    TouchableOpacity,
 } from 'react-native';
 
 // External Library imports
-import { Container, Content, Button, View, Text} from 'native-base';
+import { Container, Content, Button, View, Text, StyleProvider} from 'native-base';
 
 // Local Imports
+import getTheme from '../../../native-base-theme/components';
+import {getThemeFromColor} from '../../../native-base-theme/variables/material';
+import { primaryColor } from '../../settings';
 
 export default class AccessGroupScreen extends Component {
     
@@ -24,7 +28,6 @@ export default class AccessGroupScreen extends Component {
     }
 
     render() {
-        console.log("HomeRender")
         return (
             <Content contentContainerStyle={styles.container}>
                     <SafeAreaView style={{ flex: 1 }}>
