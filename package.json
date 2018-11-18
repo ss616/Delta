@@ -8,18 +8,25 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "expo": "^31.0.5",
     "native-base": "^2.8.1",
     "react": "^16.6.3",
     "react-native": "0.57.5",
+    "react-native-animatable": "^1.3.0",
+    "react-native-collapsible": "^1.3.0",
     "react-native-firebase": "^5.1.0",
     "react-native-google-signin": "^1.0.0",
     "react-native-image-progress": "^1.1.1",
     "react-native-material-dropdown": "^0.11.1",
+<<<<<<< HEAD
     "react-native-parallax-scroll-view": "^0.21.3",
     "react-native-progress": "^3.5.0",
     "react-native-read-more-text": "^1.1.0",
     "react-native-snap-carousel": "^3.7.5",
     "react-native-vector-icons": "^6.1.0",
+=======
+    "react-native-sortable-grid": "^2.0.0",
+>>>>>>> 95e8c8d45c9d125a2750d758969305e975ec21a4
     "react-navigation": "^2.18.2",
     "react-redux": "^5.1.1",
     "redux": "^4.0.1",

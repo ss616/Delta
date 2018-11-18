@@ -4,11 +4,17 @@ import {
     StyleSheet,
     SafeAreaView,
     ScrollView,
-    Image, Text
+    Image,
+    Switch,
+    Text,
+    TouchableOpacity,
 } from "react-native";
 
 // External Library imports
-import { Container, Content, Fab, Icon, Button, StyleProvider} from 'native-base';
+import { Container, Content, View, Card, Icon, Button} from 'native-base';
+import * as Animatable from 'react-native-animatable';
+import Collapsible from 'react-native-collapsible';
+import Accordion from 'react-native-collapsible/Accordion';
 
 // Local Imports
 import HomeScreenHeader from './HomeScreenHeader';
@@ -22,8 +28,39 @@ import viewSwitcher from './viewSwitcher';
 // import CategoryView from './CategoryView';
 // import PromoCard from './PromoCard';
 // import PostNewFab from './PostNewFab';
+import EQuoteCard from '../../reusables/EQuoteCard';
+
+//Define Constants
+
+const EQUOTES= [
+    {
+        title: 'Expiry :',
+        subtitle: 'Created By :',
+        thumbnail: require('../../../assets/logo.png'),
+        expiry_date: '16/12/2018',
+        shopper: 'mogambo',
+        user_thumbnail: require('../../../assets/pooh.png'),
+    },
+    {
+        title: 'Expiry :',
+        subtitle: 'Created By :',
+        thumbnail: require('../../../assets/logo.png'),
+        expiry_date: '16/12/2018',
+        shopper: 'mogambo',
+        user_thumbnail: require('../../../assets/pooh.png'),
+    },
+    {
+        title: 'Expiry :',
+        subtitle: 'Created By :',
+        thumbnail: require('../../../assets/logo.png'),
+        expiry_date: '16/12/2018',
+        shopper: 'mogambo',
+        user_thumbnail: require('../../../assets/pooh.png'),
+    },
+];
 
 export default class HomeScreen extends Component {
+
     static navigationOptions = ({ navigation }) => ({
         title: "Home",
         header:null,
@@ -37,55 +74,86 @@ export default class HomeScreen extends Component {
         ),
     })
 
+    renderItems() {
+        return EQUOTES.map((EQUOTE) => {
+        return (
+            <EQuoteCard 
+                    key={EQUOTE.title}
+                    item={EQUOTE}
+                />
+        );
+        });
+    }
+
     render() {
         const type = this.props.navigation.getParam('type');
-        
-        return (
-                <Container>
-                    <HomeScreenHeader 
-                        leftIconName='ios-menu'
-                        onLeftButtonPress={() => this.props.navigation.openDrawer()}
-                        searchPlaceholder={'What are you looking for?'}
-                        color={primaryColor}
-                        />
+        const cards=this.renderItems();
 
-                    <Content contentContainerStyle={styles.container}>
-                        <SafeAreaView style={{ flex: 1 }}>
-                            <ScrollView
-                                vertical={true}
-                                showsVerticalScrollIndicator={false}
-                                >
-                                
-                                {viewSwitcher(type)}
-                            </ScrollView>
-                            
-                        </SafeAreaView>
-                    </Content>
-                    
-                </Container>
+        console.log("HomeRender")
+        return (
+            <Container backgroundColor='white'>
+                
+                <HomeScreenHeader 
+                    leftIconName='ios-menu'
+                    onLeftButtonPress={() => this.props.navigation.openDrawer()}
+                    searchPlaceholder={'What are you looking for?'}
+                />
+                <Content contentContainerStyle={styles.container}>
+                    <SafeAreaView style={{ flex: 1 }}>
+                        <ScrollView
+                            vertical={true}
+                            showsVerticalScrollIndicator={false}
+                        >
+                            {viewSwitcher()}
+                        </ScrollView>
+                    </SafeAreaView>
+                </Content>
+            </Container>
         );
     }
 }
 
 const styles = StyleSheet.create({
+    eQuoteContainer: {
+        justifyContent: 'flex-start',
+        padding: 10,
+    },
+    recommendedContainer: {
+        flex: 2,
+        justifyContent: 'flex-start',
+        borderColor: 'red',
+        padding: 10,
+    },
     container: {
         flex: 1,
+        backgroundColor: 'white',
+        paddingTop: 20,
+    },
+    activeSelector: {
+        fontWeight: 'bold',
+    },
+    selectTitle: {
+        fontSize: 14,
+        fontWeight: '500',
+        padding: 10,
+    },
+    multipleToggle: {
+        flexDirection: 'row',
         justifyContent: 'center',
+        marginVertical: 30,
         alignItems: 'center',
-        backgroundColor: '#f2f3f9',
     },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
+    multipleToggle__title: {
+        fontSize: 16,
+        marginRight: 8,
     },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
-    icon: {
-        width: 24,
-        height: 24,
-    },
+    button: {
+        margin: 30,
+        padding: 20,
+        width: 100,
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        backgroundColor: '#ffffff',
+    }
 });
+

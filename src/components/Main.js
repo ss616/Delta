@@ -18,6 +18,7 @@ import HomeScreen from './screens/HomeScreen/HomeScreen';
 import ItemDetailScreen from './screens/ItemDetailScreen/ItemDetailScreen';
 import { StyleProvider } from 'native-base';
 import { setPrimaryColor } from '../settings';
+import EQuoteListScreen from './screens/EQuoteListScreen/EQuoteListScreen';
 
 
 const Drawer = createDrawerNavigator({
@@ -52,6 +53,9 @@ const RootStack = createStackNavigator({
     ItemDetail: {
       screen: ItemDetailScreen 
     },
+    EQuoteList: {
+      screen: EQuoteListScreen
+    }, 
   },
   {
     headerMode: 'none',
@@ -69,6 +73,7 @@ class Main extends Component {
     this.state = {
       loading: true,
     };
+    
   }
 
   /**

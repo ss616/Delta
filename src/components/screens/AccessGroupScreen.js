@@ -20,21 +20,16 @@ export default class AccessGroupScreen extends Component {
     
     renderButton(text){
         return(
-            <TouchableOpacity 
-                onPress={() => this.props.navigation.navigate('Home', {type:text})}
-                activeOpacity={0.9}
-            >
-                <Button bordered rounded style={styles.button}>
-                    <Text >{text} </Text>
-                </Button>
-            </TouchableOpacity>
+            <Button rounded onPress={() => this.props.navigation.navigate('Home', {type:text})} 
+            bordered style={styles.button}>
+                <Text>{text}</Text>
+            </Button>
         );
     }
 
     render() {
         return (
-            <Container>
-                <Content contentContainerStyle={styles.container}>
+            <Content contentContainerStyle={styles.container}>
                     <SafeAreaView style={{ flex: 1 }}>
                         <View style={{
                             flex: 2,
@@ -46,8 +41,7 @@ export default class AccessGroupScreen extends Component {
                             {this.renderButton('Admin')}
                         </View>
                     </SafeAreaView>
-                </Content>  
-            </Container>
+                </Content>
         );
     }
 }
@@ -78,6 +72,8 @@ const styles = StyleSheet.create({
         padding: 20,
         width: 200,
         textAlign: 'center',
-        justifyContent: 'center'
+        flexDirection: 'row',
+        justifyContent: 'center',
+        color: '#2ecc71',
     }
 });

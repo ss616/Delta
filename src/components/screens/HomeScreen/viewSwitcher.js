@@ -26,6 +26,26 @@ export default viewSwitcher = (type) => {
         <FeaturedView />
         
         <EmployeeList />
+
+        <Card
+            style={styles.eQuoteContainer}
+        >
+            <ScrollView>
+                {cards}
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('EQuoteList')}>
+                    <Text style={styles.headerText}>View More</Text>
+                </TouchableOpacity>
+            </ScrollView>
+        </Card>
         </View>
     );
 }
+
+
+const styles = StyleSheet.create({
+    headerText: {
+        textAlign: 'center',
+        fontSize: 16,
+        fontWeight: '500',
+    },
+});
