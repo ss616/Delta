@@ -5,7 +5,8 @@ import { Icon, Button, StyleProvider, ListItem, Left, Right, Body, Content, Thum
 
 // Local Imports
 import getTheme from '../../../native-base-theme/components';
-import platform from '../../../native-base-theme/variables/platform';
+import { getThemeFromColor } from '../../../native-base-theme/variables/material';
+import { primaryColor } from '../../settings';
 
 /**
  * The props for this Header =>
@@ -24,7 +25,7 @@ export default class UserCard extends Component {
 
   render() {
     return (
-        <StyleProvider style={getTheme(platform)}>
+        <StyleProvider style={getTheme(getThemeFromColor(primaryColor))}>
             <ListItem avatar>
                 <Left>
                     <Thumbnail source={this.props.thumbnail} />
@@ -35,7 +36,7 @@ export default class UserCard extends Component {
                 </Body>
                 <Right>
                     <Button size={20} transparent onPress={this.props.onRightButtonPress}>
-                        <Icon style={{ padding: 0, }} name={this.props.rightIconName} color={'#ff8821'} />
+                        <Icon style={{ padding: 0, }} name={this.props.rightIconName} color={primaryColor} />
                     </Button>
                 </Right>
             </ListItem>

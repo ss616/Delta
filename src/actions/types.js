@@ -1,3 +1,6 @@
+export const NAME_CHANGED = 'name_changed';
+export const TYPE_CHANGED = 'type_changed';
+
 export const LOGIN_USER = 'login_user';
 export const POST_USER = 'post_user';
 export const LOGIN_USER_SUCCESS = 'login_user_success';

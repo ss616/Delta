@@ -6,6 +6,7 @@ import { withNavigation } from 'react-navigation';
 
 import Image from 'react-native-image-progress';
 import ProgressBar from 'react-native-progress/Bar';
+import { primaryColor } from '../../settings';
 
 const horizontalMargin = 20;
 const slideWidth = 280;
@@ -34,7 +35,9 @@ class FeaturedCard extends Component{
         return(
             <TouchableOpacity
                 activeOpacity={0.9}
-                onPress={() => navigation.navigate('ItemDetail', {'item': item})}
+                onPress={() => {
+                    console.log(item);
+                    navigation.navigate('ItemDetail', {'item': item})}}
             >
                 <Card
                     bordered={false} 
@@ -46,7 +49,7 @@ class FeaturedCard extends Component{
                             indicatorProps={{
                                 size: 80,
                                 borderWidth: 0,
-                                color: '#ff8821',
+                                color: primaryColor,
                                 unfilledColor: 'rgba(200, 200, 200, 0.2)'
                             }}
                         />

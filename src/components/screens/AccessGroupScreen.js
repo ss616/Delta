@@ -5,25 +5,33 @@ import {
     SafeAreaView,
     ScrollView,
     Image,
+    TouchableOpacity,
 } from 'react-native';
 
 // External Library imports
-import { Container, Content, Button, View, Text} from 'native-base';
+import { Container, Content, Button, View, Text, StyleProvider} from 'native-base';
 
 // Local Imports
+import getTheme from '../../../native-base-theme/components';
+import {getThemeFromColor} from '../../../native-base-theme/variables/material';
+import { primaryColor } from '../../settings';
 
 export default class AccessGroupScreen extends Component {
     
     renderButton(text){
         return(
-            <Button rounded onPress={() => this.props.navigation.navigate('Home', {type:text})} success style={styles.button}>
-                <Text >{text} </Text>
-            </Button>
+            <TouchableOpacity 
+                onPress={() => this.props.navigation.navigate('Home', {type:text})}
+                activeOpacity={0.9}
+            >
+                <Button bordered rounded style={styles.button}>
+                    <Text >{text} </Text>
+                </Button>
+            </TouchableOpacity>
         );
     }
 
     render() {
-        console.log("HomeRender")
         return (
             <Container>
                 <Content contentContainerStyle={styles.container}>

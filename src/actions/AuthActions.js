@@ -1,5 +1,6 @@
 import { LOGIN_USER_SUCCESS, LOGIN_USER_FAIL, LOGIN_USER, 
-            POST_USER, POST_USER_FAIL, POST_USER_SUCCESS} from './types';
+            POST_USER, POST_USER_FAIL, POST_USER_SUCCESS,
+            NAME_CHANGED, TYPE_CHANGED} from './types';
 
 
 import axios from 'axios';
@@ -8,15 +9,29 @@ import { GoogleSignin } from 'react-native-google-signin';
 import {BASE_URL} from '../const';
 
 
-export const loginUser = () => {
+export const nameChanged = (text) => {
+    return {
+        type: NAME_CHANGED,
+        payload: text
+    };
+};
+
+export const typeChanged = (text) => {
+    return {
+        type: TYPE_CHANGED,
+        payload: text
+    };
+};
+
+export const loginUser = (name, type) => {
     console.log("login");
     
     return (dispatch) => {
-        dispatch({type: LOGIN_USER});
+        dispatch({type: LOGIN_USER, payload:{name:name, type: type}});
 
         GoogleSignin.signIn()
         .then((data) => {
-            console.log("Success");
+            console.log(data);
             
             // Create a new Firebase credential with the token
             const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, data.accessToken);
@@ -27,7 +42,8 @@ export const loginUser = () => {
                     // If you need to do anything with the user, do it here
                     // The user will be logged in automatically by the
                     // `onAuthStateChanged` listener we set up in App.js earlier
-                    loginUserSuccess(dispatch, user)
+                    console.log('Logged in')
+                    loginUserSuccess(dispatch, user, name, type)
                 })
                 .catch((error) => {
                     // For details of error codes, see the docs
@@ -41,26 +57,29 @@ export const loginUser = () => {
     };
 };
 
-// export const postUser = user =>{
-//     url=BASE_URL+'users/';
+export const postUser = user =>{
+    url=BASE_URL+'users/';
+    console.log(user);
     
-//     return (dispatch) => {
-//         dispatch({type: POST_USER});
+    return (dispatch) => {
+        dispatch({
+                type: POST_USER, 
+            });
         
-//         console.log(`Posting on Url=${url}`)
-//         console.log(user)
+        console.log(`Posting on Url=${url}`)
+        console.log(user)
 
-//         axios.post(url, user)
-//         .then(function (response) {
-//             console.log(response);
-//             postUserSuccess(dispatch, response);
-//         })
-//         .catch(function (error) {
-//             console.log({... error});
-//             postUserFailed(dispatch);
-//         });
-//     }
-// }
+        axios.post(url, user)
+        .then(function (response) {
+            console.log(response);
+            postUserSuccess(dispatch, response);
+        })
+        .catch(function (error) {
+            console.log({... error});
+            postUserFailed(dispatch);
+        });
+    }
+}
 
 const loginUserFailed = (dispatch) => {
     dispatch({
@@ -68,10 +87,10 @@ const loginUserFailed = (dispatch) => {
     })
 }
 
-const loginUserSuccess = (dispatch, user) => {
+const loginUserSuccess = (dispatch, user, name, type) => {
     dispatch({
         type: LOGIN_USER_SUCCESS, 
-        payload: user
+        payload: {...user, company_name: name, company_type: type}
     });
 }
 

@@ -14,7 +14,7 @@ import { GoogleSigninButton } from 'react-native-google-signin';
 import { connect } from 'react-redux';
 
 // Local Imports
-import { loginUser } from '../../actions';
+import { loginUser, nameChanged, typeChanged } from '../../actions';
 
 //const item_picker = Picker.Item;​
 class LoginScreen extends Component{
@@ -30,6 +30,14 @@ class LoginScreen extends Component{
       }, {
         value: 'Others',
       }]};
+
+    onNameChange(text) {
+        this.props.nameChanged(text)
+    }
+
+    onTypeChange(text) {
+        this.props.typeChanged(text)
+    }
 
     render() {
         return(
@@ -51,17 +59,17 @@ class LoginScreen extends Component{
                                 secureTextEntry={false}
                                 placeholder=""
                                 label="Company Name"
-                                value={this.state.company_name} 
-                                onChangeText={company_name => this.setState({ company_name })}
+                                value={this.props.company_name} 
+                                onChangeText={this.onNameChange.bind(this)}
                                 />
                         </Item>
                         <Item stackedLabel >
                         <Label> Company Type </Label>
                         <View style={{ width: 300, marginLeft: 8 }}>
                             <Dropdown
-                            onChangeText={company_type => this.setState({ company_type })}
-                            label='We are into...'
-                            data={this.state.data}
+                                onChangeText={this.onTypeChange.bind(this)}
+                                label='We are into...'
+                                data={this.state.data}
                             />
                         </View>
                         <View style={styles.button}>
@@ -77,12 +85,11 @@ class LoginScreen extends Component{
                 </View>
                 </SafeAreaView>
                 </Content>
-            </Container>
-            
+            </Container>  
         );
     }
 }
-//<Text>{this.state.company_type}</Text>
+
 const styles = {
     container: {
       flex: 1,
@@ -100,8 +107,10 @@ const mapStateToProps = state => {
     return({
         user: state.auth.user,
         error: state.auth.error,
-        loading: state.auth.loading
+        loading: state.auth.loading,
+        company_name: state.auth.company_name,
+        company_type: state.auth.company_type,
     });
 }
 
-export default connect(mapStateToProps, { loginUser })(LoginScreen);
+export default connect(mapStateToProps, { loginUser, nameChanged, typeChanged })(LoginScreen);
