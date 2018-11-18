@@ -9,12 +9,12 @@ import { connect } from 'react-redux';
 
 // Local Imports
 import LoginScreen from './screens/LoginScreen';
+import TestScreen from './screens/TestScreen';
 import DrawerContent from './DrawerContent';
 import { postUser } from '../actions';
 import AccessGroupScreen from './screens/AccessGroupScreen';
 import HomeScreen from './screens/HomeScreen/HomeScreen';
 import EQuoteListScreen from './screens/EQuoteListScreen/EQuoteListScreen';
-
 
 const Drawer = createDrawerNavigator({
         // For each screen that you can navigate to, create a new entry like this:
@@ -44,6 +44,9 @@ const RootStack = createStackNavigator({
     },
     Home: {
       screen: HomeScreen
+    },
+    Test: {
+      screen: TestScreen
     },
     EQuoteList: {
       screen: EQuoteListScreen

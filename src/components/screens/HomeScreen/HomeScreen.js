@@ -107,7 +107,7 @@ export default class HomeScreen extends Component {
                         <Card style={styles.eQuoteContainer}>
                             <ScrollView>
                                 {cards}
-                                <TouchableOpacity onPress={() => this.props.navigation.navigate('EQuoteList')}>
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate('Test')}>
                                     <Text style={styles.headerText}>View More</Text>
                                 </TouchableOpacity>
                             </ScrollView>
