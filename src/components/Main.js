@@ -18,9 +18,12 @@ import EQuoteListScreen from './screens/EQuoteListScreen/EQuoteListScreen';
 
 const Drawer = createDrawerNavigator({
         // For each screen that you can navigate to, create a new entry like this:
+        Access: {
+          screen: AccessGroupScreen,
+        },
         Home: {
             screen: HomeScreen,
-        }
+        },
     },
     {
       initialRouteName: 'Home',

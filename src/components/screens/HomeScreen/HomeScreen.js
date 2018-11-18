@@ -18,6 +18,12 @@ import Accordion from 'react-native-collapsible/Accordion';
 
 // Local Imports
 import HomeScreenHeader from './HomeScreenHeader';
+import CategoryView from './CategoryView';
+// import FeaturedView from './FeaturedView';
+// import RecommendedView from './RecommendedView';
+// import CategoryView from './CategoryView';
+// import PromoCard from './PromoCard';
+// import PostNewFab from './PostNewFab';
 import EQuoteCard from '../../reusables/EQuoteCard';
 
 //Define Constants
@@ -88,14 +94,27 @@ export default class HomeScreen extends Component {
                     onLeftButtonPress={() => this.props.navigation.openDrawer()}
                     searchPlaceholder={'What are you looking for?'}
                 />
-                <Card style={styles.eQuoteContainer}>
-                    <ScrollView>
-                        {cards}
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('EQuoteList')}>
-                            <Text style={styles.headerText}>View More</Text>
-                        </TouchableOpacity>
-                    </ScrollView>
-                </Card>
+                <Content contentContainerStyle={styles.container}>
+                    <SafeAreaView style={{ flex: 1 }}>
+                        <ScrollView
+                            vertical={true}
+                            showsVerticalScrollIndicator={false}
+                        >
+                        <CategoryView />
+                            <Text>
+                                {type}
+                            </Text>
+                        <Card style={styles.eQuoteContainer}>
+                            <ScrollView>
+                                {cards}
+                                <TouchableOpacity onPress={() => this.props.navigation.navigate('EQuoteList')}>
+                                    <Text style={styles.headerText}>View More</Text>
+                                </TouchableOpacity>
+                            </ScrollView>
+                        </Card>
+                        </ScrollView>
+                    </SafeAreaView>
+                </Content>
             </Container>
         );
     }
@@ -177,19 +196,4 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
     }
 });
-
-/*
-<Content contentContainerStyle={styles.container}>
-    <SafeAreaView style={{ flex: 1 }}>
-        <ScrollView
-            vertical={true}
-            showsVerticalScrollIndicator={false}
-        >
-        </ScrollView>
-    </SafeAreaView>
-</Content>*/
-/*<ScrollView>
-    {this.renderItems()}
-</ScrollView>
-*/
 
