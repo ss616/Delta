@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     SafeAreaView,
-    ScrollView,
     Image, Text, View
 } from "react-native";
 
@@ -11,7 +10,7 @@ import {
 import HomeScreenHeader from './HomeScreenHeader';
 import CategoryView from './CategoryView';
 import EmployeeList from './EmployeeList';
-import { primaryColor } from '../../../settings';
+import EQuotesView from './EQuotesView';
 import FeaturedView from './FeaturedView';
 
 
@@ -27,25 +26,9 @@ export default viewSwitcher = (type) => {
         
         <EmployeeList />
 
-        <Card
-            style={styles.eQuoteContainer}
-        >
-            <ScrollView>
-                {cards}
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('EQuoteList')}>
-                    <Text style={styles.headerText}>View More</Text>
-                </TouchableOpacity>
-            </ScrollView>
-        </Card>
+        <EQuotesView />
+        
         </View>
     );
 }
 
-
-const styles = StyleSheet.create({
-    headerText: {
-        textAlign: 'center',
-        fontSize: 16,
-        fontWeight: '500',
-    },
-});

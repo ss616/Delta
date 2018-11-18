@@ -9,15 +9,16 @@ import ReduxThunk from 'redux-thunk';
 // Local Imports
 import Main from './src/components/Main';
 import reducers from './src/reducers';
+import {reduxStore} from './src/store';
 
 export default class App extends Component {
 
   render() {
+    console.log(reduxStore);
     return (
-      <Provider store = {createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
+      <Provider store = {reduxStore}>
         <Main />
       </Provider>
-      
     );
   }
 }

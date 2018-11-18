@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
-import {Card, H3, List} from 'native-base';
+import {Card, List, H3} from 'native-base';
 
 import UserCard from '../../reusables/UserCard';
 
@@ -14,7 +14,7 @@ class EmployeeList extends Component {
   render() {
     return (
       <Card style={styles.cardContainer}>
-        <H3 style={styles.getItFromText} font-size={10}>
+        <H3 style={styles.cardTitle} font-size={10}>
             Employees
         </H3>
         <List>
@@ -43,7 +43,7 @@ const styles = {
       marginTop:0,
       paddingBottom:20,
   },
-  getItFromText:{
+  cardTitle:{
       color: '#514d47',
       justifyContent: 'flex-start',
       marginLeft:15,

@@ -21,7 +21,7 @@ const EQUOTES= [
     {
         title: 'Expiry :',
         subtitle: 'Created By :',
-        thumbnail: require('../../../assets/logo.png'),
+        thumbnail: require('../../../assets/server.png'),
         expiry_date: '16/12/2018',
         shopper: 'mogambo',
         user_thumbnail: require('../../../assets/pooh.png'),
@@ -29,8 +29,24 @@ const EQUOTES= [
     {
         title: 'Expiry :',
         subtitle: 'Created By :',
-        thumbnail: require('../../../assets/logo.png'),
-        expiry_date: '16/12/2018',
+        thumbnail: require('../../../assets/accessories.jpg'),
+        expiry_date: '14/12/2018',
+        shopper: 'mogambo',
+        user_thumbnail: require('../../../assets/pooh.png'),
+    },
+    {
+        title: 'Expiry :',
+        subtitle: 'Created By :',
+        thumbnail: require('../../../assets/processor.jpg'),
+        expiry_date: '12/12/2018',
+        shopper: 'mogambo',
+        user_thumbnail: require('../../../assets/pooh.png'),
+    },
+    {
+        title: 'Expiry :',
+        subtitle: 'Created By :',
+        thumbnail: require('../../../assets/gpu.jpg'),
+        expiry_date: '11/12/2018',
         shopper: 'mogambo',
         user_thumbnail: require('../../../assets/pooh.png'),
     },
@@ -38,23 +54,7 @@ const EQUOTES= [
         title: 'Expiry :',
         subtitle: 'Created By :',
         thumbnail: require('../../../assets/logo.png'),
-        expiry_date: '16/12/2018',
-        shopper: 'mogambo',
-        user_thumbnail: require('../../../assets/pooh.png'),
-    },
-    {
-        title: 'Expiry :',
-        subtitle: 'Created By :',
-        thumbnail: require('../../../assets/logo.png'),
-        expiry_date: '16/12/2018',
-        shopper: 'mogambo',
-        user_thumbnail: require('../../../assets/pooh.png'),
-    },
-    {
-        title: 'Expiry :',
-        subtitle: 'Created By :',
-        thumbnail: require('../../../assets/logo.png'),
-        expiry_date: '16/12/2018',
+        expiry_date: '10/12/2018',
         shopper: 'mogambo',
         user_thumbnail: require('../../../assets/pooh.png'),
     },
@@ -66,7 +66,7 @@ class EQuoteListScreen extends Component {
         return EQUOTES.map((EQUOTE) => {
         return (
             <EQuoteCard 
-                    key={EQUOTE.title}
+                    key={EQUOTE.expiry_date}
                     item={EQUOTE}
                 />
         );
@@ -79,7 +79,7 @@ class EQuoteListScreen extends Component {
                 <EQuoteListScreenHeader 
                             leftIconName='ios-arrow-back'
                             onLeftButtonPress={() => this.props.navigation.goBack()}
-                            headerTitle=''
+                            headerTitle='Quotes'
                 />
 
                 <View style={styles.headerViewContainer}>

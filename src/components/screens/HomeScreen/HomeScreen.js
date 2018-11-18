@@ -30,35 +30,6 @@ import viewSwitcher from './viewSwitcher';
 // import PostNewFab from './PostNewFab';
 import EQuoteCard from '../../reusables/EQuoteCard';
 
-//Define Constants
-
-const EQUOTES= [
-    {
-        title: 'Expiry :',
-        subtitle: 'Created By :',
-        thumbnail: require('../../../assets/logo.png'),
-        expiry_date: '16/12/2018',
-        shopper: 'mogambo',
-        user_thumbnail: require('../../../assets/pooh.png'),
-    },
-    {
-        title: 'Expiry :',
-        subtitle: 'Created By :',
-        thumbnail: require('../../../assets/logo.png'),
-        expiry_date: '16/12/2018',
-        shopper: 'mogambo',
-        user_thumbnail: require('../../../assets/pooh.png'),
-    },
-    {
-        title: 'Expiry :',
-        subtitle: 'Created By :',
-        thumbnail: require('../../../assets/logo.png'),
-        expiry_date: '16/12/2018',
-        shopper: 'mogambo',
-        user_thumbnail: require('../../../assets/pooh.png'),
-    },
-];
-
 export default class HomeScreen extends Component {
 
     static navigationOptions = ({ navigation }) => ({
@@ -74,20 +45,8 @@ export default class HomeScreen extends Component {
         ),
     })
 
-    renderItems() {
-        return EQUOTES.map((EQUOTE) => {
-        return (
-            <EQuoteCard 
-                    key={EQUOTE.title}
-                    item={EQUOTE}
-                />
-        );
-        });
-    }
-
     render() {
         const type = this.props.navigation.getParam('type');
-        const cards=this.renderItems();
 
         console.log("HomeRender")
         return (
@@ -97,6 +56,7 @@ export default class HomeScreen extends Component {
                     leftIconName='ios-menu'
                     onLeftButtonPress={() => this.props.navigation.openDrawer()}
                     searchPlaceholder={'What are you looking for?'}
+                    color={primaryColor}
                 />
                 <Content contentContainerStyle={styles.container}>
                     <SafeAreaView style={{ flex: 1 }}>
@@ -104,7 +64,7 @@ export default class HomeScreen extends Component {
                             vertical={true}
                             showsVerticalScrollIndicator={false}
                         >
-                            {viewSwitcher()}
+                            {viewSwitcher(type)}
                             {/* nacho */}
                         </ScrollView>
                     </SafeAreaView>
@@ -128,7 +88,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white',
-        paddingTop: 20,
+        paddingTop: 0,
     },
     activeSelector: {
         fontWeight: 'bold',

@@ -9,7 +9,6 @@ import { connect } from 'react-redux';
 
 // Local Imports
 import getTheme from '../../native-base-theme/components';
-import platform from '../../native-base-theme/variables/platform';
 import LoginScreen from './screens/LoginScreen';
 import DrawerContent from './DrawerContent';
 import { postUser } from '../actions';
