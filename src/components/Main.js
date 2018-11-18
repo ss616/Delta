@@ -13,6 +13,7 @@ import DrawerContent from './DrawerContent';
 import { postUser } from '../actions';
 import AccessGroupScreen from './screens/AccessGroupScreen';
 import HomeScreen from './screens/HomeScreen/HomeScreen';
+import EQuoteListScreen from './screens/EQuoteListScreen/EQuoteListScreen';
 
 
 const Drawer = createDrawerNavigator({
@@ -32,9 +33,6 @@ const Drawer = createDrawerNavigator({
     
 // The Root of our Stack Navigation
 const RootStack = createStackNavigator({
-    // Preferences: {
-    //   screen: PreferencesScreen
-    // },  
     Access: {
       screen: AccessGroupScreen
     },
@@ -44,6 +42,9 @@ const RootStack = createStackNavigator({
     Home: {
       screen: HomeScreen
     },
+    EQuoteList: {
+      screen: EQuoteListScreen
+    }, 
   },
   {
     headerMode: 'none',
