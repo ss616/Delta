@@ -8,10 +8,10 @@ export const LOGIN_USER_FAIL = 'login_user_fail';
 export const POST_USER_SUCCESS = 'post_user_success';
 export const POST_USER_FAIL = 'post_user_fail';
 
-export const GET_SUGGESTIONS = 'get_suggestions';
-export const GET_SUGGESTIONS_SUCCESS = 'get_suggestions_success';
-export const GET_SUGGESTIONS_FAIL = 'get_suggestions_fail';
+export const GET_RECOMMENDATIONS = 'get_recommendations';
+export const GET_RECOMMENDATIONS_SUCCESS = 'get_recommendations_success';
+export const GET_RECOMMENDATIONS_FAIL = 'get_recommendations_fail';
 
-export const GET_ITEM = 'get_item';
-export const GET_ITEM_SUCCESS = 'get_item_success';
-export const GET_ITEM_FAIL = 'get_item_fail';
+export const GET_ITEMS = 'get_item';
+export const GET_ITEMS_SUCCESS = 'get_item_success';
+export const GET_ITEMS_FAIL = 'get_item_fail';

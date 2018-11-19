@@ -12,6 +12,7 @@ import CategoryView from './CategoryView';
 import EmployeeList from './EmployeeList';
 import EQuotesView from './EQuotesView';
 import FeaturedView from './FeaturedView';
+import RecommendedView from './RecommendedView';
 
 
 export default viewSwitcher = (type) => {
@@ -21,6 +22,8 @@ export default viewSwitcher = (type) => {
         <Text>{type}</Text>
                                 
         <CategoryView />
+
+        <RecommendedView />
 
         {/* <FeaturedView />
         

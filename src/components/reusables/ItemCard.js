@@ -15,13 +15,13 @@ class ItemCard extends Component{
             <StyleProvider style={getTheme(platform)}>
             <ListItem avatar onPress={() => this.props.navigation.navigate('ItemDetail', {'item': item})}>
                 <Left>
-                    <Thumbnail square source={item.thumbnail} style={{height:80}}/>
+                    <Thumbnail square source={{uri: item.photo_url}} style={{height:80}}/>
                 </Left>
                 <Body>
-                    <Text style={styles.bodyText}>{item.title}</Text>
-                    <Text note>{item.subtitle}</Text>
-                    <Text note>{item.rating}</Text>
-                    <Text note>{item.size}</Text>
+                    <Text style={styles.bodyText}>{item.product}</Text>
+                    <Text note>{item.company}</Text>
+                    <Text note>{item.cpu}</Text>
+                    <Text note>{item.memory}</Text>
                 </Body>
                 <Right>
                     <Button size={10} transparent>

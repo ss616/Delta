@@ -7,35 +7,44 @@ import {
     SafeAreaView,
 } from 'react-native';
 
+import { connect } from 'react-redux';
+
 // External Library imports
 import { Container, Text, Content, StyleProvider} from 'native-base';
-import { withNavigation } from 'react-navigation';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
 // Local Imports
 import ItemListScreenHeader from './ItemListScreenHeader';
+import { getItems } from '../../../actions/ItemActions'
 import ItemCard from '../../reusables/ItemCard';
 import { primaryColor } from '../../../settings';
 import getTheme from '../../../../native-base-theme/components';
 import {getThemeFromColor} from '../../../../native-base-theme/variables/material';
 
 class ItemListScreen extends Component {
+
+    componentDidMount() {
+        this.props.getItems('laptop')
+    }
         
     renderItems() {
-        // return this.state.items.map((item) => {
-        // return (
-        //     <ItemCard 
-        //             key={item.title}
-        //             item={item}
-        //             rightIconName='heart'
-        //         />
-        // );
-        // });
+        if(this.props.item){
+            return this.props.items.map((item) => {
+                return (
+                    <ItemCard 
+                    key={item.id}
+                    item={item}
+                    rightIconName='heart'
+                    />
+                    );
+                });
+            }
     }
     
     render(){
         const item = this.props.navigation.getParam('itemList');
+        console.log(this.props);
         return(
             <StyleProvider style={getTheme(getThemeFromColor(this.props.color))}>
 
@@ -89,7 +98,14 @@ class ItemListScreen extends Component {
     }
 }
 
-export default withNavigation(ItemListScreen);
+const mapStateToProps = state => {
+    return({
+        items:state.item.data
+    });
+}
+
+export default connect(mapStateToProps, { getItems })(ItemListScreen);
+
 const styles= {
     headerViewContainer:{
         flexDirection: 'row',
