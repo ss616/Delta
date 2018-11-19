@@ -74,7 +74,9 @@ class CategoryView extends Component {
         <ImageWithTitleCard 
                 key={item.title}
                 item={item}
-                //onPress= {() => this.props.navigation.navigate('ItemList', {'itemList': item})}
+                onPress= {() => {
+                    console.log(this.props)
+                    this.props.navigation.navigate('ItemList', {'itemList': item})}}
             />
     );
     });

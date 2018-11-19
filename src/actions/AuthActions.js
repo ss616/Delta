@@ -4,8 +4,6 @@ import { LOGIN_USER_SUCCESS, LOGIN_USER_FAIL, LOGIN_USER,
 
 
 import axios from 'axios';
-import firebase from 'react-native-firebase';
-import { GoogleSignin } from 'react-native-google-signin';
 import {BASE_URL} from '../const';
 
 
@@ -20,40 +18,6 @@ export const typeChanged = (text) => {
     return {
         type: TYPE_CHANGED,
         payload: text
-    };
-};
-
-export const loginUser = (name, type) => {
-    console.log("login");
-    
-    return (dispatch) => {
-        dispatch({type: LOGIN_USER, payload:{name:name, type: type}});
-
-        GoogleSignin.signIn()
-        .then((data) => {
-            console.log(data);
-            
-            // Create a new Firebase credential with the token
-            const credential = firebase.auth.GoogleAuthProvider.credential(data.idToken, data.accessToken);
-            
-            // Login with the credential
-            firebase.auth().signInWithCredential(credential)
-                .then((user) => {
-                    // If you need to do anything with the user, do it here
-                    // The user will be logged in automatically by the
-                    // `onAuthStateChanged` listener we set up in App.js earlier
-                    console.log('Logged in')
-                    loginUserSuccess(dispatch, user, name, type)
-                })
-                .catch((error) => {
-                    // For details of error codes, see the docs
-                    // The message contains the default Firebase string
-                    // representation of the error
-                    const { code, message } = error;
-                    console.log(message);
-                    loginUserFailed(dispatch)
-                });
-        });
     };
 };
 
@@ -79,19 +43,6 @@ export const postUser = user =>{
             postUserFailed(dispatch);
         });
     }
-}
-
-const loginUserFailed = (dispatch) => {
-    dispatch({
-        type: LOGIN_USER_FAIL
-    })
-}
-
-const loginUserSuccess = (dispatch, user, name, type) => {
-    dispatch({
-        type: LOGIN_USER_SUCCESS, 
-        payload: {...user, company_name: name, company_type: type}
-    });
 }
 
 const postUserFailed = (dispatch) => {

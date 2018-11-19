@@ -12,3 +12,6 @@ export const GET_SUGGESTIONS = 'get_suggestions';
 export const GET_SUGGESTIONS_SUCCESS = 'get_suggestions_success';
 export const GET_SUGGESTIONS_FAIL = 'get_suggestions_fail';
 
+export const GET_ITEM = 'get_item';
+export const GET_ITEM_SUCCESS = 'get_item_success';
+export const GET_ITEM_FAIL = 'get_item_fail';
