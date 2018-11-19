@@ -7,6 +7,7 @@ import {
 // Local Imports
 import CategoryView from './CategoryView';
 import EmployeeList from './EmployeeList';
+import UserView from './UserView';
 import EQuotesView from './EQuotesView';
 import FeaturedView from './FeaturedView';
 import RecommendedView from './RecommendedView';
@@ -27,7 +28,7 @@ buyer=()=>{
 }
 
 admin=()=>{
-    return <EmployeeList />
+    return <UserView />
 }
 
 callSwitch=(type)=>{

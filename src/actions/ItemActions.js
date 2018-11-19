@@ -51,6 +51,28 @@ export const getOrders = () =>{
 
 
 
+export const getQuotes = () =>{
+    url=BASE_URL+`quote/`;
+    
+    return (dispatch) => {
+    dispatch({
+            type: GET_QUOTES, 
+        });
+    
+    console.log(`GET on Url=${url}`)
+    
+    axios.get(url)
+    .then(function (response) {
+        console.log(response);
+        fetchQuotesSuccess(dispatch, response);
+    })
+    .catch(function (error) {
+        console.log({... error});
+        fetchQuotesFailed(dispatch);
+    });
+    }
+    }
+
 const fetchFailed = (dispatch) => {
     dispatch({
     type: GET_ITEMS_FAIL
@@ -75,4 +97,21 @@ const fetchOrderSuccess = (dispatch, response) => {
     type: GET_ORDER_SUCCESS, 
     payload: response
     });
+dispatch({
+type: GET_ITEMS_SUCCESS, 
+payload: response
+});
+}
+
+const fetchQuotesFailed = (dispatch) => {
+    dispatch({
+    type: GET_QUOTES_FAIL
+    })
+    }
+    
+const fetchQuotesSuccess = (dispatch, response) => {
+dispatch({
+type: GET_QUOTES_SUCCESS, 
+payload: response
+});
 }
