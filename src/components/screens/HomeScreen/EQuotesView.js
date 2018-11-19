@@ -6,6 +6,8 @@ import { withNavigation } from 'react-navigation';
 
 import EQuoteCard from '../../reusables/EQuoteCard';
 
+import { connect } from 'react-redux';
+
 import { getQuotes } from '../../../actions/ItemActions'
 
 class EQuotesView extends Component {

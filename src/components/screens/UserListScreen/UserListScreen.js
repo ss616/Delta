@@ -11,28 +11,28 @@ import {
 import { Container, Text, Content} from 'native-base';
 import { withNavigation } from 'react-navigation';
 
-import { getQuotes } from '../../../actions/ItemActions'
+import { getUsers } from '../../../actions/UserActions'
 
 import { connect } from 'react-redux';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
 // Local Imports
-import EQuoteListScreenHeader from './EQuoteListScreenHeader';
-import EQuoteCard from '../../reusables/EQuoteCard';
+import UserListScreenHeader from './UserListScreenHeader';
+import UserCard from '../../reusables/UserCard';
 
-class EQuoteListScreen extends Component {
+class UserListScreen extends Component {
 
     constructor(props) {
         super(props);
         this.state = {};
-        this.props.getQuotes();
+        this.props.getUsers();
     }
     
     renderItems() {
         return this.props.list.map((item) => {
             return (
-                <EQuoteCard 
+                <UserCard 
                         key={item.expiry_date}
                         item={item}
                     />
@@ -43,10 +43,10 @@ class EQuoteListScreen extends Component {
     render(){
         return(
             <Container>
-                <EQuoteListScreenHeader 
+                <UserListScreenHeader 
                             leftIconName='ios-arrow-back'
                             onLeftButtonPress={() => this.props.navigation.goBack()}
-                            headerTitle='Quotes'
+                            headerTitle='Employees'
                 />
 
                 <View style={styles.headerViewContainer}>
@@ -128,11 +128,11 @@ const styles= {
 
 const mapStateToProps = state => {
     return({
-        error: state.auth.error,
-        loading: state.auth.loading,
-        list: state.item.data,
+        error: state.user.error,
+        loading: state.user.loading,
+        list: state.user.data,
     });
 }
 // withNavigation returns a component that wraps MyBackButton and passes in the
 // navigation prop
-export default connect(mapStateToProps, { getQuotes })(withNavigation(EQuoteListScreen));;
+export default connect(mapStateToProps, { getUsers })(withNavigation(UserListScreen));;

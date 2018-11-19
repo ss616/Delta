@@ -4,7 +4,9 @@ import { View, Text, StyleSheet, ScrollView, TouchableOpacity} from 'react-nativ
 import { Container, Content, Card, H3} from 'native-base';
 import { withNavigation } from 'react-navigation';
 
-import UserCard from '../../reusables/userCard';
+import UserCard from '../../reusables/UserCard';
+
+import { connect } from 'react-redux';
 
 import { getUsers } from '../../../actions/ItemActions'
 

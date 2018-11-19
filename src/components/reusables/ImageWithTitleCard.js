@@ -7,6 +7,7 @@ import {
 } from "react-native";
 import { TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
+import {primaryColor} from '../../settings'
 
 /**
  * Props->
@@ -32,7 +33,8 @@ class ImageWithTitleCard extends Component{
             <View style={{ width: item.width, marginLeft: item.margin, borderWidth: 0, borderColor: '#db9627' }}>
                 <View style={{ flex: 2 }}>
                     <Image source={item.thumbnail}
-                        style={{flex: 1, width: null, height: item.height, resizeMode: item.resizeMode, borderRadius:3 }}
+                        style={{flex: 1, width: null, height: item.height, resizeMode: item.resizeMode, 
+                            borderRadius:3, borderColor:{primaryColor} }}
                     />
                 </View>
                 <View style={{ flex: 1, alignSelf: 'center', paddingTop: 5, marginBottom:0, borderRadius:3 }}>

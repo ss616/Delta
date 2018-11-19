@@ -18,6 +18,7 @@ import ItemListScreen from './screens/ItemListScreen/ItemListScreen';
 import { StyleProvider } from 'native-base';
 import { setPrimaryColor } from '../settings';
 import EQuoteListScreen from './screens/EQuoteListScreen/EQuoteListScreen';
+import UserListScreen from './screens/UserListScreen/UserListScreen';
 
 const Drawer = createDrawerNavigator({
         // For each screen that you can navigate to, create a new entry like this:
