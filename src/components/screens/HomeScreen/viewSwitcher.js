@@ -22,11 +22,11 @@ export default viewSwitcher = (type) => {
                                 
         <CategoryView />
 
-        <FeaturedView />
+        {/* <FeaturedView />
         
         <EmployeeList />
 
-        <EQuotesView />
+        <EQuotesView /> */}
         
         </View>
     );

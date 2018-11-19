@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 // Local Imports
 import getTheme from '../../native-base-theme/components';
 import LoginScreen from './screens/LoginScreen';
-import TestScreen from './screens/TestScreen';
 import DrawerContent from './DrawerContent';
 import { postUser } from '../actions';
 import AccessGroupScreen from './screens/AccessGroupScreen';
@@ -49,9 +48,6 @@ const RootStack = createStackNavigator({
     },
     Home: {
       screen: HomeScreen
-    },
-    Test: {
-      screen: TestScreen
     },
     ItemDetail: {
       screen: ItemDetailScreen 
