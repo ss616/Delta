@@ -14,6 +14,7 @@ import { postUser } from '../actions';
 import AccessGroupScreen from './screens/AccessGroupScreen';
 import HomeScreen from './screens/HomeScreen/HomeScreen';
 import ItemDetailScreen from './screens/ItemDetailScreen/ItemDetailScreen';
+import OrderListScreen from './screens/OrderListScreen/OrderListScreen';
 import ItemListScreen from './screens/ItemListScreen/ItemListScreen';
 import { StyleProvider } from 'native-base';
 import { setPrimaryColor } from '../settings';
@@ -56,6 +57,9 @@ const RootStack = createStackNavigator({
     },
     EQuoteList: {
       screen: EQuoteListScreen
+    }, 
+    OrderList: {
+      screen: OrderListScreen
     }, 
   },
   {

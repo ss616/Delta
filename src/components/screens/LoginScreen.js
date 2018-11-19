@@ -18,7 +18,7 @@ import { postUser, nameChanged, typeChanged } from '../../actions';
 //const item_picker = Picker.Item;​
 class LoginScreen extends Component{
 
-    state = { company_name: '', company_type: 'Bank', data: [{
+    state = { company_name: '', company_type: 'Bank', type: [{
         value: 'Bank',
       }, {
         value: 'Education',
@@ -28,6 +28,17 @@ class LoginScreen extends Component{
         value: 'RetailStores',
       }, {
         value: 'Others',
+      }],
+      locs: [{
+        value: 'RU|Russia',
+      }, {
+        value: 'PA|Panama',
+      }, {
+        value: 'PL|Poland',
+      }, {
+        value: 'SA|Saudi Arabia',
+      }, {
+        value: 'SG|Singapore',
       }]};
 
     onNameChange(text) {
@@ -68,13 +79,20 @@ class LoginScreen extends Component{
                             <Dropdown
                                 onChangeText={this.onTypeChange.bind(this)}
                                 label='We are into...'
-                                data={this.state.data}
+                                data={this.state.type}
+                            />
+                        </View>
+                        <View style={{ width: 300, marginLeft: 8 }}>
+                            <Dropdown
+                                onChangeText={this.onLocChange.bind(this)}
+                                label='We are based in...'
+                                data={this.state.locs}
                             />
                         </View>
                         <View style={styles.button}>
                             <Button
                                 style={{ width: 120, height: 48, margin: 20 }}
-                                onPress={() => {this.props.postUser(this.props.company_name,this.props.company_type)}}
+                                onPress={() => {this.props.postUser(this.props.company_name,this.props.company_type, this.props.location)}}
                              ><Text>Log In</Text></Button>
                         </View>
                         </Item>
@@ -106,7 +124,8 @@ const mapStateToProps = state => {
         loading: state.auth.loading,
         company_name: state.auth.company_name,
         company_type: state.auth.company_type,
+        location: state.auth.location,
     });
 }
 
-export default connect(mapStateToProps, { postUser, nameChanged, typeChanged })(LoginScreen);
+export default connect(mapStateToProps, { postUser, nameChanged, typeChanged, locChange })(LoginScreen);

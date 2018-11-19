@@ -11,7 +11,7 @@ class CategoryView extends Component {
     
     state = { items: [
         {
-            title: 'Laptops',
+            Product: 'Laptops',
             thumbnail: require('../../../assets/laptop.jpg'),
             height: 60,
             margin: 0,
@@ -19,7 +19,7 @@ class CategoryView extends Component {
             resizeMode: 'center',
         },
         {
-            title: 'Desktops',
+            Product: 'Desktops',
             thumbnail: require('../../../assets/desktop.jpg'),
             height: 60,
             margin: 0,
@@ -27,7 +27,7 @@ class CategoryView extends Component {
             resizeMode: 'center',
         },
         {
-            title: 'Workstations',
+            Product: 'Workstations',
             thumbnail: require('../../../assets/workstation.jpeg'),
             height: 60,
             margin: 0,
@@ -35,7 +35,7 @@ class CategoryView extends Component {
             resizeMode: 'center',
         },
         {
-            title: 'Servers',
+            Product: 'Servers',
             thumbnail: require('../../../assets/server.png'),
             height: 60,
             margin: 0,
@@ -43,7 +43,7 @@ class CategoryView extends Component {
             resizeMode: 'center',
         },
         {
-            title: 'Processors',
+            Product: 'Processors',
             thumbnail: require('../../../assets/processor.jpg'),
             height: 60,
             margin: 0,
@@ -51,7 +51,7 @@ class CategoryView extends Component {
             resizeMode: 'center',
         },
         {
-            title: 'GPUs',
+            Product: 'GPUs',
             thumbnail: require('../../../assets/gpu.jpg'),
             height: 60,
             margin: 0,
@@ -59,7 +59,7 @@ class CategoryView extends Component {
             resizeMode: 'center',
         },
         {
-            title: 'Accessories',
+            Product: 'Accessories',
             thumbnail: require('../../../assets/accessories.jpg'),
             height: 60,
             margin: 0,
@@ -72,7 +72,7 @@ class CategoryView extends Component {
     return this.state.items.map((item) => {
     return (
         <ImageWithTitleCard 
-                key={item.title}
+                key={item.Product}
                 item={item}
                 onPress= {() => {
                     console.log(this.props)

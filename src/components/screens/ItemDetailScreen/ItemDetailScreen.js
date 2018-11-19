@@ -51,7 +51,7 @@ export default class ItemDetailScreen extends Component{
                         <ItemDetailScreenHeader 
                             leftIconName='ios-arrow-back'
                             onLeftButtonPress={() => this.props.navigation.goBack()}
-                            headerTitle={item.title}
+                            headerTitle={item.Product}
                         />
                     )}
                     renderFixedHeader={() => (
@@ -72,7 +72,7 @@ export default class ItemDetailScreen extends Component{
                                     renderRevealedFooter={this._renderRevealedFooter}
                                     onReady={this._handleTextReady}>
                                     <Text style={styles.description}>
-                                        {item.description}
+                                        {item.Company + '\n' + item.Price_euros + '\n' +item.Memory+ '\n' +item.Cpu+ '\n' +item.Gpu}
                                     </Text>
                                 </ReadMore>
                                 <ThumbnailList />

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import AuthReducer from './AuthReducer';
-import RecommendationReducer from './AuthReducer';
+import RecommendationReducer from './RecommendationReducer';
 import ItemsReducer from './ItemsReducer';
 // import PostNewReducer from './PostNewReducer';
 

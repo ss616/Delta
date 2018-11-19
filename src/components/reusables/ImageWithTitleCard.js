@@ -36,7 +36,7 @@ class ImageWithTitleCard extends Component{
                     />
                 </View>
                 <View style={{ flex: 1, alignSelf: 'center', paddingTop: 5, marginBottom:0, borderRadius:3 }}>
-                    <Text style={{fontWeight:'300', color:'black'}}>{item.title}</Text>
+                    <Text style={{fontWeight:'300', color:'black'}}>{item.Product}</Text>
                 </View>
             </View>
             </TouchableOpacity>

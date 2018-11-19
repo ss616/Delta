@@ -12,10 +12,17 @@ import FeaturedView from './FeaturedView';
 import RecommendedView from './RecommendedView';
 
 shopper=()=>{
-    return <FeaturedView />
+    console.log("Featured")
+    return (
+    <View>
+        <FeaturedView />
+        <RecommendedView />
+    </View>
+    );
 }
 
 buyer=()=>{
+    console.log("zc sbuyc")
     return <EQuotesView />
 }
 
@@ -24,15 +31,16 @@ admin=()=>{
 }
 
 callSwitch=(type)=>{
+    console.log('switch')
     switch(type) {
         case 'Shopper':
-            this.shopper();
+            return this.shopper();
             break;
         case 'Buyer':
-            this.buyer();
+            return this.buyer();
             break;
         case 'Admin':
-            this.admin();
+            return this.admin();
             break;
     }
 }
@@ -41,12 +49,10 @@ export default viewSwitcher = (type) => {
     
     return(
         <View>
-
-        <Text>{type}</Text>
                                 
         <CategoryView />
 
-        {callSwitch(type)}
+        {this.callSwitch(type)}
 
         </View>
     );

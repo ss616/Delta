@@ -5,8 +5,8 @@ import axios from 'axios';
 import {BASE_URL} from '../const';
 
 
-export const getRecommendations = name =>{
-url=BASE_URL+'rec/' + name;
+export const getRecommendations = () =>{
+url=BASE_URL+'rec1/' ;
 
 return (dispatch) => {
 dispatch({

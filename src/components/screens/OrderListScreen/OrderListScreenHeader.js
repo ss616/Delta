@@ -11,7 +11,6 @@ import platform from '../../../../native-base-theme/variables/platform';
 import { getThemeFromColor } from '../../../../native-base-theme/variables/material';
 import { primaryColor } from '../../../settings';
 
-
 /**
  * The props for this Header =>
  * 1.onLeftButtonPress
@@ -19,21 +18,23 @@ import { primaryColor } from '../../../settings';
  * 3.searchPlaceholder
  * 4.headerTitle
  */
-export default class ItemDetailScreenHeader extends Component {
+export default class OrderListScreenHeader extends Component {
     render() {
         return(
             <StyleProvider style={getTheme(getThemeFromColor(primaryColor))}>  
-                <Header transparent noShadow style={{ borderBottomWidth: 0, elevation: 0 }}>
-                    <Left>
-                        <Button transparent onPress={this.props.onLeftButtonPress}>
-                            <Icon name={this.props.leftIconName} size={25} color={'white'} />
-                        </Button>
-                    </Left>
-                    <Body style={{flex: 2, paddingBottom:3}}>
-                        <Title>{this.props.headerTitle}</Title>
-                    </Body>
-                    <Right />
-                </Header>
+                <View>
+                        <Header noShadow style={{ borderBottomWidth: 0, elevation: 0 }}>
+                            <Left>
+                                <Button transparent onPress={this.props.onLeftButtonPress}>
+                                    <Icon name={this.props.leftIconName} size={25} color={'white'} />
+                                </Button>
+                            </Left>
+                            <Body>
+                                <Title>{this.props.headerTitle}</Title>
+                            </Body>
+                            <Right />
+                        </Header>
+                </View>
             </StyleProvider>
         );
     }
