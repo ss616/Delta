@@ -1,5 +1,6 @@
 import { 
-    GET_ITEMS, GET_ITEMS_SUCCESS, GET_ITEMS_FAIL
+    GET_ITEMS, GET_ITEMS_SUCCESS, GET_ITEMS_FAIL,
+    GET_QUOTES, GET_QUOTES_SUCCESS, GET_QUOTES_FAIL,
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -19,6 +20,15 @@ export default (state  = INITIAL_STATE, action) => {
             return {...state, ...INITIAL_STATE, data: action.payload.results};
             
         case GET_ITEMS_FAIL:
+            return {...state, error: 'Loading Failed.', loading: false};
+
+        case GET_QUOTES:
+            return {...state, loading: true, error: ''};
+
+        case GET_QUOTES_SUCCESS:
+            return {...state, ...INITIAL_STATE, data: action.payload.results};
+            
+        case GET_QUOTES_FAIL:
             return {...state, error: 'Loading Failed.', loading: false};
     
         default:

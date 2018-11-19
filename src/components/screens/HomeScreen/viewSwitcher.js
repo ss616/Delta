@@ -26,13 +26,13 @@ admin=()=>{
 callSwitch=(type)=>{
     switch(type) {
         case 'Shopper':
-            this.shopper();
+            return this.shopper();
             break;
         case 'Buyer':
-            this.buyer();
+            return this.buyer();
             break;
         case 'Admin':
-            this.admin();
+            return this.admin();
             break;
     }
 }
@@ -46,7 +46,7 @@ export default viewSwitcher = (type) => {
                                 
         <CategoryView />
 
-        {callSwitch(type)}
+        {this.callSwitch(type)}
 
         </View>
     );

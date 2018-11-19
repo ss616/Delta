@@ -11,65 +11,30 @@ import {
 import { Container, Text, Content} from 'native-base';
 import { withNavigation } from 'react-navigation';
 
+import { getQuotes } from '../../../actions/ItemActions'
+
 import Icon from 'react-native-vector-icons/Ionicons';
 
 // Local Imports
 import EQuoteListScreenHeader from './EQuoteListScreenHeader';
 import EQuoteCard from '../../reusables/EQuoteCard';
 
-const EQUOTES= [
-    {
-        title: 'Expiry :',
-        subtitle: 'Created By :',
-        thumbnail: require('../../../assets/server.png'),
-        expiry_date: '16/12/2018',
-        shopper: 'mogambo',
-        user_thumbnail: require('../../../assets/pooh.png'),
-    },
-    {
-        title: 'Expiry :',
-        subtitle: 'Created By :',
-        thumbnail: require('../../../assets/accessories.jpg'),
-        expiry_date: '14/12/2018',
-        shopper: 'mogambo',
-        user_thumbnail: require('../../../assets/pooh.png'),
-    },
-    {
-        title: 'Expiry :',
-        subtitle: 'Created By :',
-        thumbnail: require('../../../assets/processor.jpg'),
-        expiry_date: '12/12/2018',
-        shopper: 'mogambo',
-        user_thumbnail: require('../../../assets/pooh.png'),
-    },
-    {
-        title: 'Expiry :',
-        subtitle: 'Created By :',
-        thumbnail: require('../../../assets/gpu.jpg'),
-        expiry_date: '11/12/2018',
-        shopper: 'mogambo',
-        user_thumbnail: require('../../../assets/pooh.png'),
-    },
-    {
-        title: 'Expiry :',
-        subtitle: 'Created By :',
-        thumbnail: require('../../../assets/logo.png'),
-        expiry_date: '10/12/2018',
-        shopper: 'mogambo',
-        user_thumbnail: require('../../../assets/pooh.png'),
-    },
-];
-
 class EQuoteListScreen extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {};
+        this.props.getQuotes();
+    }
     
     renderItems() {
-        return EQUOTES.map((EQUOTE) => {
-        return (
-            <EQuoteCard 
-                    key={EQUOTE.expiry_date}
-                    item={EQUOTE}
-                />
-        );
+        return this.props.list.map((item) => {
+            return (
+                <EQuoteCard 
+                        key={item.expiry_date}
+                        item={item}
+                    />
+            );
         });
     }
     
@@ -159,3 +124,14 @@ const styles= {
         alignItems: 'center',
     }
 }
+
+const mapStateToProps = state => {
+    return({
+        error: state.auth.error,
+        loading: state.auth.loading,
+        list: state.item.data,
+    });
+}
+// withNavigation returns a component that wraps MyBackButton and passes in the
+// navigation prop
+export default connect(mapStateToProps, { getQuotes })(withNavigation(EQuotesListScreen));;

@@ -6,45 +6,21 @@ import { withNavigation } from 'react-navigation';
 
 import EQuoteCard from '../../reusables/EQuoteCard';
 
-const EQUOTES= [
-    {
-        title: 'Expiry :',
-        subtitle: 'Created By :',
-        thumbnail: require('../../../assets/server.png'),
-        expiry_date: '16/12/2018',
-        shopper: 'mogambo',
-        user_thumbnail: require('../../../assets/pooh.png'),
-    },
-    {
-        title: 'Expiry :',
-        subtitle: 'Created By :',
-        thumbnail: require('../../../assets/accessories.jpg'),
-        expiry_date: '14/12/2018',
-        shopper: 'mogambo',
-        user_thumbnail: require('../../../assets/pooh.png'),
-    },
-    {
-        title: 'Expiry :',
-        subtitle: 'Created By :',
-        thumbnail: require('../../../assets/processor.jpg'),
-        expiry_date: '12/12/2018',
-        shopper: 'mogambo',
-        user_thumbnail: require('../../../assets/pooh.png'),
-    },
-];
+import { getQuotes } from '../../../actions/ItemActions'
 
 class EQuotesView extends Component {
     constructor(props) {
         super(props);
         this.state = {};
+        this.props.getQuotes();
     }
 
     renderItems() {
-        return EQUOTES.map((EQUOTE) => {
+        return this.props.list.slice(1,4).map((item) => {
             return (
                 <EQuoteCard 
-                        key={EQUOTE.expiry_date}
-                        item={EQUOTE}
+                        key={item.expiry_date}
+                        item={item}
                     />
             );
         });
@@ -84,6 +60,13 @@ const styles = StyleSheet.create({
     }
 });
 
+const mapStateToProps = state => {
+    return({
+        error: state.auth.error,
+        loading: state.auth.loading,
+        list: state.item.data,
+    });
+}
 // withNavigation returns a component that wraps MyBackButton and passes in the
 // navigation prop
-export default withNavigation(EQuotesView);
+export default connect(mapStateToProps, { getQuotes })(withNavigation(EQuotesView));;
