@@ -75,7 +75,7 @@ class LoginScreen extends Component{
                             <Button
                                 style={{ width: 120, height: 48, margin: 20 }}
                                 onPress={() => {this.props.postUser(this.props.company_name,this.props.company_type)}}
-                             />
+                             ><Text>Log In</Text></Button>
                         </View>
                         </Item>
                     </Form>

@@ -12,9 +12,6 @@ import {
 
 // External Library imports
 import { Container, Content, View, Card, Icon, Button} from 'native-base';
-import * as Animatable from 'react-native-animatable';
-import Collapsible from 'react-native-collapsible';
-import Accordion from 'react-native-collapsible/Accordion';
 
 // Local Imports
 import HomeScreenHeader from './HomeScreenHeader';
@@ -65,7 +62,6 @@ export default class HomeScreen extends Component {
                             showsVerticalScrollIndicator={false}
                         >
                             {viewSwitcher(type)}
-                            {/* nacho */}
                         </ScrollView>
                     </SafeAreaView>
                 </Content>

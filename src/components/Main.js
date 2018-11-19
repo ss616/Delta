@@ -1,6 +1,7 @@
 // Library Imports
 import React, {Component} from 'react';
 import { createDrawerNavigator, createStackNavigator } from 'react-navigation';
+import { Spinner } from '../components/reusables/Spinner';
 
 // External Library Imports
 import { connect } from 'react-redux';
@@ -17,7 +18,6 @@ import ItemListScreen from './screens/ItemListScreen/ItemListScreen';
 import { StyleProvider } from 'native-base';
 import { setPrimaryColor } from '../settings';
 import EQuoteListScreen from './screens/EQuoteListScreen/EQuoteListScreen';
-// nacho
 
 const Drawer = createDrawerNavigator({
         // For each screen that you can navigate to, create a new entry like this:
@@ -82,13 +82,8 @@ class Main extends Component {
     console.log(this.props.response);
 
     // The application is initialising
-    //if (this.props.loading) return null;
-
-    // else{
-    //   return (
-    //     console.log(this.props.response)
-    //   );
-    // }
+    if (this.props.loading) 
+      return <Spinner size='small' />;
     
     // The response is an Object, so they're logged in and posted
     if (this.props.response){ 

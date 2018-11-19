@@ -1,21 +1,44 @@
 import React, { Component } from 'react';
 
 import {
-    StyleSheet,
-    SafeAreaView,
-    Image, Text, View
+    Text, View
 } from "react-native";
 
 // Local Imports
-import HomeScreenHeader from './HomeScreenHeader';
 import CategoryView from './CategoryView';
 import EmployeeList from './EmployeeList';
 import EQuotesView from './EQuotesView';
 import FeaturedView from './FeaturedView';
 import RecommendedView from './RecommendedView';
 
+shopper=()=>{
+    return <FeaturedView />
+}
+
+buyer=()=>{
+    return <EQuotesView />
+}
+
+admin=()=>{
+    return <EmployeeList />
+}
+
+callSwitch=(type)=>{
+    switch(type) {
+        case 'Shopper':
+            this.shopper();
+            break;
+        case 'Buyer':
+            this.buyer();
+            break;
+        case 'Admin':
+            this.admin();
+            break;
+    }
+}
 
 export default viewSwitcher = (type) => {
+    
     return(
         <View>
 
@@ -23,14 +46,8 @@ export default viewSwitcher = (type) => {
                                 
         <CategoryView />
 
-        <RecommendedView />
+        {callSwitch(type)}
 
-        {/* <FeaturedView />
-        
-        <EmployeeList />
-
-        <EQuotesView /> */}
-        
         </View>
     );
 }
