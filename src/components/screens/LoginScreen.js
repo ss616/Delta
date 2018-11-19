@@ -13,7 +13,7 @@ import { Container, Button, Header, Content, Text, Form, Item, Input, Label, Pic
 import { connect } from 'react-redux';
 
 // Local Imports
-import { postUser, nameChanged, typeChanged } from '../../actions';
+import { postUser, nameChanged, typeChanged, locChange } from '../../actions';
 
 //const item_picker = Picker.Item;​
 class LoginScreen extends Component{
@@ -47,6 +47,10 @@ class LoginScreen extends Component{
 
     onTypeChange(text) {
         this.props.typeChanged(text)
+    }
+
+    onLocChange(text) {
+        this.props.locChange(text)
     }
 
     render() {

@@ -5,8 +5,8 @@ import axios from 'axios';
 import {BASE_URL} from '../const';
 
 
-export const getUsers = name =>{
-url=BASE_URL+'rec/' + name;
+export const getUsers = () =>{
+url=BASE_URL+'profiles/';
 
 return (dispatch) => {
 dispatch({

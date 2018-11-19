@@ -20,7 +20,7 @@ export const typeChanged = (text) => {
     };
 };
 
-export const locChanged = (text) => {
+export const locChange = (text) => {
     return {
         type: LOC_CHANGED,
         payload: text

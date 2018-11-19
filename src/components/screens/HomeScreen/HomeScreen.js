@@ -16,7 +16,6 @@ import { Container, Content, View, Card, Icon, Button} from 'native-base';
 // Local Imports
 import HomeScreenHeader from './HomeScreenHeader';
 import CategoryView from './CategoryView';
-import EmployeeList from './EmployeeList';
 import { primaryColor } from '../../../settings';
 import FeaturedView from './FeaturedView';
 import viewSwitcher from './viewSwitcher';

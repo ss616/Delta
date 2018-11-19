@@ -7,7 +7,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 // Local Imports
 import getTheme from '../../../../native-base-theme/components';
-import platform from '../../../../native-base-theme/variables/platform';
+import { getThemeFromColor } from '../../../../native-base-theme/variables/material';
+import { primaryColor } from '../../../settings';
 
 /**
  * The props for this Header =>
@@ -19,7 +20,7 @@ import platform from '../../../../native-base-theme/variables/platform';
 export default class UserListScreenHeader extends Component {
     render() {
         return(
-            <StyleProvider style={getTheme(platform)}>  
+            <StyleProvider style={getTheme(getThemeFromColor(primaryColor))}>  
                 <View>
                         <Header noShadow style={{ borderBottomWidth: 0, elevation: 0 }}>
                             <Left>

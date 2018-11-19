@@ -8,7 +8,7 @@ import UserCard from '../../reusables/UserCard';
 
 import { connect } from 'react-redux';
 
-import { getUsers } from '../../../actions/ItemActions'
+import { getUsers } from '../../../actions/UserActions'
 
 class UserView extends Component {
     constructor(props) {
@@ -18,34 +18,36 @@ class UserView extends Component {
     }
 
     renderItems() {
-        return this.props.list.slice(1,4).map((item) => {
-            return (
-                <UserCard 
-                        key={item.expiry_date}
-                        item={item}
+        if(this.props.list){
+
+            return this.props.list.slice(1,4).map((item) => {
+                return (
+                    <UserCard 
+                        key={item.name}
+                        item={{...item, thumbnail:{uri:item.photo_url}}}
                     />
-            );
-        });
+                    );
+            });
+        }
     }
 
     render() {
-    const cards=this.renderItems();
-
-    return (
-        <Card
-            style={styles.eQuoteContainer}
-        >
-            <H3 style={styles.cardTitle} font-size={10}>
-                Quotes
-            </H3>
-            <ScrollView>
-                {cards}
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('UserList')}>
-                    <Text style={styles.headerText}>View More</Text>
-                </TouchableOpacity>
-            </ScrollView>
-        </Card>
-    );
+        console.log(this.props)
+        return (
+            <Card
+                style={styles.eQuoteContainer}
+            >
+                <H3 style={styles.cardTitle} font-size={10}>
+                    Employees
+                </H3>
+                <ScrollView>
+                    {this.renderItems()}
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('UserList')}>
+                        <Text style={styles.headerText}>View More</Text>
+                    </TouchableOpacity>
+                </ScrollView>
+            </Card>
+        );
     }
 }
 const styles = StyleSheet.create({

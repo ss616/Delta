@@ -6,7 +6,6 @@ import {
 
 // Local Imports
 import CategoryView from './CategoryView';
-import EmployeeList from './EmployeeList';
 import UserView from './UserView';
 import EQuotesView from './EQuotesView';
 import FeaturedView from './FeaturedView';

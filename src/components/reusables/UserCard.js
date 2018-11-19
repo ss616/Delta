@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
-import { Icon, Button, StyleProvider, ListItem, Left, Right, Body, Content, Thumbnail} from 'native-base';
+import { Icon, Button, Card, StyleProvider, ListItem, Left, Right, Body, Content, Thumbnail} from 'native-base';
 
 
 // Local Imports
@@ -28,11 +28,11 @@ export default class UserCard extends Component {
         <StyleProvider style={getTheme(getThemeFromColor(primaryColor))}>
             <Card><ListItem avatar>
                 <Left>
-                    <Thumbnail source={this.props.thumbnail} />
+                    <Thumbnail source={this.props.item.thumbnail} />
                 </Left>
                 <Body style={{marginTop:5}}>
-                    <Text style={{fontSize:18, paddingBottom:5, paddingTop:0, fontWeight:'400'}}>{this.props.name}</Text>
-                    <Text note>{this.props.subtitle}</Text>
+                    <Text style={{fontSize:18, paddingBottom:5, paddingTop:0, fontWeight:'400'}}>{this.props.item.name}</Text>
+                    <Text note>{this.props.item.role}</Text>
                 </Body>
                 <Right>
                     <Button size={20} transparent onPress={this.props.onRightButtonPress}>

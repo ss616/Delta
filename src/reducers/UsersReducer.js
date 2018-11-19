@@ -16,7 +16,7 @@ export default (state  = INITIAL_STATE, action) => {
             return {...state, loading: true, error: ''};
 
         case GET_USERS_SUCCESS:
-            return {...state, ...INITIAL_STATE, data: action.payload.data.results};
+            return {...state, ...INITIAL_STATE, data: action.payload.data};
             
         case GET_USERS_FAIL:
             return {...state, error: 'Authentication Failed.', loading: false};

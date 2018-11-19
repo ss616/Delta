@@ -33,8 +33,8 @@ class UserListScreen extends Component {
         return this.props.list.map((item) => {
             return (
                 <UserCard 
-                        key={item.expiry_date}
-                        item={item}
+                        key={item.name}
+                        item={{...item, thumbnail:{uri:item.photo_url}}}
                     />
             );
         });
