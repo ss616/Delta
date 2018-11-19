@@ -17,3 +17,7 @@ export const GET_QUOTES = 'get_quotes';
 export const GET_QUOTES_SUCCESS = 'get_quotes_success';
 export const GET_QUOTES_FAIL = 'get_quotes_fail';
 
+export const GET_USERS = 'get_users';
+export const GET_USERS_SUCCESS = 'get_users_success';
+export const GET_USERS_FAIL = 'get_users_fail';
+

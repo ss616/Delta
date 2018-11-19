@@ -26,7 +26,7 @@ export default class UserCard extends Component {
   render() {
     return (
         <StyleProvider style={getTheme(getThemeFromColor(primaryColor))}>
-            <ListItem avatar>
+            <Card><ListItem avatar>
                 <Left>
                     <Thumbnail source={this.props.thumbnail} />
                 </Left>
@@ -40,6 +40,7 @@ export default class UserCard extends Component {
                     </Button>
                 </Right>
             </ListItem>
+            </Card>
         </StyleProvider>        
     );
   }

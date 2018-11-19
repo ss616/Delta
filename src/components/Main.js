@@ -56,6 +56,9 @@ const RootStack = createStackNavigator({
     },
     EQuoteList: {
       screen: EQuoteListScreen
+    },
+    UserList: {
+      screen: UserListScreen
     }, 
   },
   {
