@@ -7,14 +7,13 @@ import {
     ScrollView,
     Image,
 } from 'react-native';
-import { Container, Header, Content, Text, Form, Item, Input, Label, Picker, View } from 'native-base';
+import { Container, Button, Header, Content, Text, Form, Item, Input, Label, Picker, View } from 'native-base';
 
 // External Library Imports
-import { GoogleSigninButton } from 'react-native-google-signin';
 import { connect } from 'react-redux';
 
 // Local Imports
-import { loginUser, nameChanged, typeChanged } from '../../actions';
+import { postUser, nameChanged, typeChanged } from '../../actions';
 
 //const item_picker = Picker.Item;​
 class LoginScreen extends Component{
@@ -22,11 +21,11 @@ class LoginScreen extends Component{
     state = { company_name: '', company_type: 'Bank', data: [{
         value: 'Bank',
       }, {
-        value: 'Business',
-      }, {
-        value: 'School',
+        value: 'Education',
       }, {
         value: 'Healthcare',
+      }, {
+        value: 'RetailStores',
       }, {
         value: 'Others',
       }]};
@@ -73,12 +72,10 @@ class LoginScreen extends Component{
                             />
                         </View>
                         <View style={styles.button}>
-                            <GoogleSigninButton
+                            <Button
                                 style={{ width: 120, height: 48, margin: 20 }}
-                                size={GoogleSigninButton.Size.Standard}
-                                color={GoogleSigninButton.Color.Dark}
-                                onPress={this.props.loginUser}
-                                disabled={this.props.loading} />
+                                onPress={() => {this.props.postUser(this.props.company_name,this.props.company_type)}}
+                             />
                         </View>
                         </Item>
                     </Form>
@@ -105,7 +102,6 @@ const styles = {
 
 const mapStateToProps = state => {
     return({
-        user: state.auth.user,
         error: state.auth.error,
         loading: state.auth.loading,
         company_name: state.auth.company_name,
@@ -113,4 +109,4 @@ const mapStateToProps = state => {
     });
 }
 
-export default connect(mapStateToProps, { loginUser, nameChanged, typeChanged })(LoginScreen);
+export default connect(mapStateToProps, { postUser, nameChanged, typeChanged })(LoginScreen);

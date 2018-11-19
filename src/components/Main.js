@@ -3,8 +3,6 @@ import React, {Component} from 'react';
 import { createDrawerNavigator, createStackNavigator } from 'react-navigation';
 
 // External Library Imports
-import firebase from 'react-native-firebase';
-import { GoogleSignin } from 'react-native-google-signin';
 import { connect } from 'react-redux';
 
 // Local Imports
@@ -68,50 +66,29 @@ const RootStack = createStackNavigator({
 class Main extends Component {
   constructor() {
     super();
-    GoogleSignin.configure();
     this.state = {
       loading: true,
     };
 
   }
 
-  /**
-   * When the App component mounts, we listen for any authentication
-   * state changes in Firebase.
-   * Once subscribed, the 'user' parameter will either be null (logged out) or an Object (logged in)
-   */
-  componentDidMount() {
-    this.authSubscription = firebase.auth().onAuthStateChanged((user) => {
-      this.setState({
-        loading: false,
-        user,
-      });
-
-      if(user!=null){
-        this.props.postUser({...user._user, 
-                              company_name: this.props.company_name, 
-                              company_type: this.props.company_type});
-      }
-    });
-  }
-
-  /**
-   * Don't forget to stop listening for authentication state changes
-   * when the component unmounts.
-   */
-  componentWillUnmount() {
-    this.authSubscription();
-  }
-
   render() {
 
     console.log('MainRender');
+    console.log(this.props.response);
 
     // The application is initialising
-    if (this.state.loading) return null;
+    //if (this.props.loading) return null;
 
+    // else{
+    //   return (
+    //     console.log(this.props.response)
+    //   );
+    // }
+    
     // The response is an Object, so they're logged in and posted
-    if (this.state.user){   
+    if (this.props.response){ 
+      setPrimaryColor(this.props.response.data.primary_color) 
       return <RootStack/>
     }
 

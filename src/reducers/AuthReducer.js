@@ -1,7 +1,6 @@
-import { 
-    LOGIN_USER_SUCCESS, POST_USER_SUCCESS,
-    LOGIN_USER_FAIL, POST_USER_FAIL,
-    LOGIN_USER, POST_USER, NAME_CHANGED, TYPE_CHANGED
+import { POST_USER_SUCCESS,
+    POST_USER_FAIL,
+    POST_USER, NAME_CHANGED, TYPE_CHANGED
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -21,21 +20,11 @@ export default (state  = INITIAL_STATE, action) => {
         case TYPE_CHANGED:
             return {...state, company_type: action.payload};
 
-        case LOGIN_USER:
-            return {...state, loading: true, error: ''};
-
-        case LOGIN_USER_SUCCESS:
-            console.log(action.payload)
-            return {...state, ...INITIAL_STATE,  loading: false, user: action.payload};
-            
-        case LOGIN_USER_FAIL:
-            return {...state, error: 'Authentication Failed.', loading: false};
-
         case POST_USER:
             return {...state, loading: true, error: ''};
 
         case POST_USER_SUCCESS:
-            return {...state, ...INITIAL_STATE, response: action.payload};
+            return {...state, ...INITIAL_STATE, loading: false, response: action.payload};
             
         case POST_USER_FAIL:
             return {...state, error: 'Authentication Failed.', loading: false};

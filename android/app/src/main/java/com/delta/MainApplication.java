@@ -3,18 +3,10 @@ package com.delta;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import co.apptailor.googlesignin.RNGoogleSigninPackage;
-import io.invertase.firebase.RNFirebasePackage;
-import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
-
-import co.apptailor.googlesignin.RNGoogleSigninPackage;  // <--- import
-import io.invertase.firebase.RNFirebasePackage;
-import io.invertase.firebase.auth.RNFirebaseAuthPackage;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,14 +17,11 @@ public class MainApplication extends Application implements ReactApplication {
     public boolean getUseDeveloperSupport() {
       return BuildConfig.DEBUG;
     }
-
+    
     @Override
     protected List<ReactPackage> getPackages() {
-      return Arrays.asList(
-          new MainReactPackage(),
-            new RNFirebasePackage(),
-            new RNGoogleSigninPackage(),
-            new RNFirebaseAuthPackage()
+      return Arrays.<ReactPackage>asList(
+          new MainReactPackage()
       );
     }
 
