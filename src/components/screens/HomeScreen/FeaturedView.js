@@ -28,7 +28,7 @@ class FeaturedView extends Component {
             {
                 title: 'Dell Black Friday Deals',
                 description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-                thumbnail: {uri: 'http://blackfridayshoppingdealsonline.com/wp-content/uploads/2017/09/dell-black-friday-2015-ad-leak-deals-laptops-notebooks-tablets-desktops.jpg'}
+                thumbnail: {uri: 'https://zdnet1.cbsistatic.com/hub/i/2016/11/02/82a0cb2c-cb26-403a-b6ab-1526fabdb2e8/7c05edd2f850892ed76c9263e8dd807e/black-friday-2016-dell-laptop-notebook-desktop-pc-inspiron.jpg'}
             },
             {
                 title: 'Art Laptop',

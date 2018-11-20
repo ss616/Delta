@@ -34,7 +34,7 @@ class ImageWithTitleCard extends Component{
                 <View style={{ flex: 2 }}>
                     <Image source={item.thumbnail}
                         style={{flex: 1, width: null, height: item.height, resizeMode: item.resizeMode, 
-                            borderRadius:3, borderColor:{primaryColor} }}
+                            borderRadius:3 }}
                     />
                 </View>
                 <View style={{ flex: 1, alignSelf: 'center', paddingTop: 5, marginBottom:0, borderRadius:3 }}>

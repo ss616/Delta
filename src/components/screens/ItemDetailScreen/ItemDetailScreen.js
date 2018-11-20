@@ -13,6 +13,7 @@ import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import ProgressBar from 'react-native-progress/Bar';
 import ReadMore from 'react-native-read-more-text';
 
+import {connect} from 'react-redux'
 
 // Local Imports
 import ItemDetailScreenHeader from './ItemDetailScreenHeader';
@@ -20,10 +21,46 @@ import ThumbnailList from './ThumbnailList';
 import UserCard from '../../reusables/UserCard';
 import { primaryColor } from '../../../settings';
 
-export default class ItemDetailScreen extends Component{
+import { getItemsById } from '../../../actions';
+import Spinner from '../../../../native-base-theme/components/Spinner';
+
+class ItemDetailScreen extends Component{
+    constructor(props) {
+        super(props);
+            this.state = {
+        };
+        console.log(this.props.navigation.getParam('item'));
+        this.props.getItemsById(this.props.navigation.getParam('item').id);
+    }
+
+    renderProgressBar() {
+        // if(this.props.loading){
+        //     return <Spinner size='small'/>;
+        // }else return null;
+    }
+
+    renderItem(item){
+        return(
+            <Text style={styles.description}>
+                {item.Inches + '\n' + item.ScreenResolution + '\n' +item.OpSys+ '\n' +item.Ram+ '\n' +item.TypeName}
+            </Text>
+        )
+    }
+
+    renderAdvanced(item) {
+        if(item){
+            return this.renderItem(item)
+        }else if(this.props.itemAdv){
+            return this.renderItem(this.props.itemAdv)
+        }
+    }
+    
     render() {
         const item = this.props.navigation.getParam('item');
-        console.log(item)
+        const itemAdv = this.props.navigation.getParam('itemAdv');
+
+        console.log(this.props);
+        console.log(item, itemAdv);
         return (
             <Container style={{backgroundColor: '#ced5e0'}}>
                 <StatusBar
@@ -63,44 +100,24 @@ export default class ItemDetailScreen extends Component{
                     )}
                 >
                     <Card style={styles.itemContainer}>
-                            <View style={styles.infoContainer}>
-                                <H2 style={styles.title} font-size={21}>{item.title}</H2>
-                                <View style={{backgroundColor:'#e5e2da', width:null, height:1, marginTop:8, marginBottom:8}}></View>
-                                <ReadMore
-                                    numberOfLines={3}
-                                    renderTruncatedFooter={this._renderTruncatedFooter}
-                                    renderRevealedFooter={this._renderRevealedFooter}
-                                    onReady={this._handleTextReady}>
-                                    <Text style={styles.description}>
-                                        {item.Company + '\n' + item.Price_euros + '\n' +item.Memory+ '\n' +item.Cpu+ '\n' +item.Gpu}
-                                    </Text>
-                                </ReadMore>
-                                <ThumbnailList />
-                            </View>
+                        <View style={styles.infoContainer}>
+                            <H2 style={styles.title} font-size={21}>{item.title}</H2>
+                            
+                            <View style={{backgroundColor:'#e5e2da', width:null, height:1, marginTop:8, marginBottom:8}}></View>
+                            
+                            <Text>BASIC</Text>
+                            <Text style={styles.description}>
+                                    {item.Company + '\n' + item.Price_euros + '\n' +item.Memory+ '\n' +item.Cpu+ '\n' +item.Gpu}
+                            </Text>
+
+                            {this.renderProgressBar()}
+
+                            <Text>ADVANCED</Text>
+                            {this.renderAdvanced(itemAdv)}
+                            
+                            <ThumbnailList />
+                        </View>
                     </Card>
-                    <View>
-                        <Card style={styles.getItFromContainer}>
-                            <H3 style={styles.getItFromText} font-size={10}>
-                                Get It From
-                            </H3>
-                            <List>
-                                <UserCard
-                                    name='Sooryanarayanan'
-                                    thumbnail={item.thumbnail}
-                                    subtitle='107 2B'
-                                    rightIconName='ios-share-alt'
-                                    onRightButtonPress={()=>console.log('request')}
-                                />
-                                <UserCard
-                                    name='Hiran PY'
-                                    thumbnail={item.thumbnail}
-                                    subtitle='208 1B'
-                                    rightIconName='ios-share-alt'
-                                    onRightButtonPress={()=>console.log('request')}
-                                    />
-                            </List>
-                        </Card>
-                    </View>
                 </ParallaxScrollView>
             </Container>
         );
@@ -171,3 +188,12 @@ const styles = {
         marginTop:10,
     }
 }
+
+mapStateToProps = (state) => {
+    return({
+        itemAdv: state.item.advItem,
+        loading: state.item.loading 
+    });
+}
+
+export default connect(mapStateToProps, {getItemsById})(ItemDetailScreen);

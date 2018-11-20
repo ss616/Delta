@@ -14,30 +14,16 @@ import { primaryColor } from '../../../settings.js';
 
 import {getRecommendations} from '../../../actions/RecommendedActions';
 
-class RecommendedView extends Component {
+class SuggestedView extends Component {
     constructor(props) {
-        super(props);
-        this.state = {
+            super(props);
+            this.state = {
         };
-        this.props.getRecommendations();
     }    
-
-    getNextItem(item, id){
-        if(item){
-            console.log(item)
-            return item.find(obj => obj.id == id)
-        }
-        else return null;
-    }
-
+    
     renderItems() {
-        if(this.props.loading){
-            return (
-                <Text>Loading....</Text>
-            );
-        }
         if(this.props.list){
-            return this.props.list.map((item) => {
+            return this.props.list.results.map((item) => {
                 return (
                     <ImageWithTitleCard 
                         key={item.id}
@@ -54,7 +40,7 @@ class RecommendedView extends Component {
         return(
             <View style={{marginTop:5, marginBottom:10}}>
                 <Text style={{ fontSize: 14, fontWeight: '100', paddingHorizontal: 10, color: primaryColor }}>
-                    Recommended For You >
+                    Suggested For You >
                 </Text>
                 <Card style={{padding:1, margin:2,paddingBottom:10,}}>
                     <View style={{ marginTop: 10 }}>
@@ -70,14 +56,5 @@ class RecommendedView extends Component {
         );
     }
 }
-mapStateToProps = state => {
-    return (
-        {
-            error: state.rec.error,
-            loading: state.rec.loading,
-            list: state.rec.data,
-            opt: state.rec.data.opt,
-        }
-    );
-}
-export default connect(mapStateToProps, { getRecommendations })(withNavigation(RecommendedView));
+
+export default withNavigation(SuggestedView);

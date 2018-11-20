@@ -1,6 +1,6 @@
 import { POST_USER_SUCCESS,
     POST_USER_FAIL,
-    POST_USER, NAME_CHANGED, TYPE_CHANGED, LOC_CHANGED
+    POST_USER, NAME_CHANGED, TYPE_CHANGED, LOC_CHANGED, SIGN_OUT
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -21,7 +21,10 @@ export default (state  = INITIAL_STATE, action) => {
             return {...state, company_type: action.payload};
 
         case LOC_CHANGED:
-        return {...state, location: action.payload};
+            return {...state, location: action.payload};
+
+        case SIGN_OUT:
+            return {...state, response: action.payload};
 
         case POST_USER:
             return {...state, loading: true, error: ''};

@@ -18,14 +18,17 @@ class EQuotesView extends Component {
     }
 
     renderItems() {
-        return this.props.list.slice(1,4).map((item) => {
-            return (
-                <EQuoteCard 
-                        key={item.expiry_date}
-                        item={item}
+        if(this.props.list){
+
+            return this.props.list.slice(1,4).map((item) => {
+                return (
+                    <EQuoteCard 
+                    key={item.expiry_date}
+                    item={item}
                     />
-            );
-        });
+                    );
+            });
+        }
     }
 
     render() {

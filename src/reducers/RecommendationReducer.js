@@ -6,7 +6,8 @@ const INITIAL_STATE = {
     loading: false, 
     error: '', 
     user: null,
-    data: []
+    data: [],
+    opt: []
 };
 
 export default (state  = INITIAL_STATE, action) => {

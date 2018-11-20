@@ -24,14 +24,16 @@ export default class HomeScreenHeader extends Component {
                 <View>
                     <Header noShadow style={{ borderBottomWidth: 0, elevation: 0 }}>
                         <Left>
-                            <Button transparent onPress={this.props.onLeftButtonPress}>
-                                <Icon name={this.props.leftIconName} size={25} color={'white'} />
-                            </Button>
+                            {this.props.leftIcon}
                         </Left>
                         <Body>
                             <Title>Delta</Title>
                         </Body>
-                        <Right />
+                        <Right>
+                            <Button transparent onPress={this.props.onRightButtonPress}>
+                                <Icon name={this.props.rightIconName} size={25} color={'white'} />
+                            </Button>
+                        </Right>
                     </Header>
                     <Header searchBar rounded>
                         <Item>

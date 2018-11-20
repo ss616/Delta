@@ -8,6 +8,7 @@ import EQuoteCard from '../../reusables/EQuoteCard';
 
 import {getOrders} from '../../../actions/ItemActions';
 
+import {connect} from 'react-redux';
 
 class OrdersView extends Component {
     constructor(props) {
@@ -17,7 +18,8 @@ class OrdersView extends Component {
     }
 
     renderItems() {
-        return this.props.list.slice(1,4).map((item) => {
+        if(this.props.list){
+            return this.props.list.slice(1,4).map((item) => {
             return (
                 <EQuoteCard 
                         key={item.expiry_date}
@@ -26,16 +28,17 @@ class OrdersView extends Component {
             );
         });
     }
+    }
 
     render() {
     const cards=this.renderItems();
-
+        console.log(this.props)
     return (
         <Card
             style={styles.eQuoteContainer}
         >
             <H3 style={styles.cardTitle} font-size={10}>
-                Quotes
+                Orders
             </H3>
             <ScrollView>
                 {cards}

@@ -15,7 +15,6 @@ var primaryColor = '#00ccff';
 
 export const getThemeFromColor = (inputColor) => {
   primaryColor = inputColor;
-  console.log(primaryColor);
   const material = {
     platformStyle,
     platform,

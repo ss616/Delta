@@ -39,7 +39,17 @@ class LoginScreen extends Component{
         value: 'SA|Saudi Arabia',
       }, {
         value: 'SG|Singapore',
-      }]};
+      }],
+      langs: [{
+        value: 'Français',
+      }, {
+        value: 'Deutsche',
+      }, {
+        value: 'Español',
+      }, {
+        value: 'Arabic',
+      }]
+    };
 
     onNameChange(text) {
         this.props.nameChanged(text)
@@ -82,7 +92,7 @@ class LoginScreen extends Component{
                         <View style={{ width: 300, marginLeft: 8 }}>
                             <Dropdown
                                 onChangeText={this.onTypeChange.bind(this)}
-                                label='We are into...'
+                                label='Sector'
                                 data={this.state.type}
                             />
                         </View>
@@ -93,9 +103,16 @@ class LoginScreen extends Component{
                                 data={this.state.locs}
                             />
                         </View>
+                        <View style={{ width: 300, marginLeft: 8 }}>
+                            <Dropdown
+                                onChangeText={this.onLocChange.bind(this)}
+                                label='We speak...'
+                                data={this.state.langs}
+                            />
+                        </View>
                         <View style={styles.button}>
                             <Button
-                                style={{ width: 120, height: 48, margin: 20, justifyContent: 'center' }}
+                                style={{ width: 120, height: 48, margin: 20, justifyContent: 'center', backgroundColor:"#1966b3" }}
                                 onPress={() => {this.props.postUser(this.props.company_name,this.props.company_type, this.props.location)}}
                              ><Text>Log In</Text></Button>
                         </View>

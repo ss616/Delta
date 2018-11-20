@@ -14,7 +14,7 @@ import {reduxStore} from './src/store';
 export default class App extends Component {
 
   render() {
-    console.log(reduxStore);
+    console.disableYellowBox=true;
     return (
       <Provider store = {reduxStore}>
         <Main />

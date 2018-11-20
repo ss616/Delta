@@ -1,4 +1,5 @@
-import {GET_ITEMS, GET_ITEMS_FAIL, GET_ITEMS_SUCCESS, GET_ORDER, GET_ORDER_FAIL, GET_ORDER_SUCCESS} from './types';
+import {GET_ITEMS, GET_ITEMS_FAIL, GET_ITEMS_SUCCESS, GET_ORDER, GET_ORDER_FAIL, 
+     GET_ORDER_SUCCESS, GET_QUOTES, GET_QUOTES_FAIL, GET_QUOTES_SUCCESS, GET_ITEMS_BY_ID, GET_ITEMS_BY_ID_FAIL, GET_ITEMS_BY_ID_SUCCESS} from './types';
 
 
 import axios from 'axios';
@@ -27,12 +28,34 @@ export const getItems = (type) =>{
     }
 }
 
+export const getItemsById = (id) =>{
+    url=BASE_URL+`laptop/${id}/`;
+    
+    return (dispatch) => {
+    dispatch({
+            type: GET_ITEMS_BY_ID, 
+        });
+
+    console.log(`GET on Url=${url}`)
+
+    axios.get(url)
+    .then(function (response) {
+        console.log(response);
+        fetchItemsByIdSuccess(dispatch, response);
+    })
+    .catch(function (error) {
+        console.log({... error});
+        fetchItemsByIdFailed(dispatch);
+    });
+    }
+}
+
 export const getOrders = () =>{
     url=BASE_URL+'order/';
     
     return (dispatch) => {
         dispatch({
-                type: GET_ORDER, 
+                type: GET_ITEMS_BY_ID, 
             });
         
         console.log(`GET on Url=${url}`)
@@ -47,8 +70,7 @@ export const getOrders = () =>{
             fetchOrderFailed(dispatch);
         });
     }
-    }
-
+}
 
 
 export const getQuotes = () =>{
@@ -94,24 +116,33 @@ const fetchOrderFailed = (dispatch) => {
 
 const fetchOrderSuccess = (dispatch, response) => {
     dispatch({
-    type: GET_ORDER_SUCCESS, 
-    payload: response
+        type: GET_ORDER_SUCCESS, 
+        payload: response
     });
-dispatch({
-type: GET_ITEMS_SUCCESS, 
-payload: response
-});
+}
+
+const fetchItemsByIdSuccess = (dispatch, response) => {
+    dispatch({
+        type: GET_ITEMS_BY_ID_SUCCESS, 
+        payload: response
+    });
+}
+
+const fetchItemsByIdFailed = (dispatch) => {
+    dispatch({
+        type: GET_ITEMS_BY_ID_FAIL
+    })
 }
 
 const fetchQuotesFailed = (dispatch) => {
     dispatch({
-    type: GET_QUOTES_FAIL
+        type: GET_QUOTES_FAIL
     })
     }
     
 const fetchQuotesSuccess = (dispatch, response) => {
-dispatch({
-type: GET_QUOTES_SUCCESS, 
-payload: response
-});
+    dispatch({
+    type: GET_QUOTES_SUCCESS, 
+    payload: response
+    });
 }

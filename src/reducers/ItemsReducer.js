@@ -2,6 +2,7 @@ import {
     GET_ITEMS, GET_ITEMS_SUCCESS, GET_ITEMS_FAIL,
     GET_ORDER, GET_ORDER_FAIL, GET_ORDER_SUCCESS,
     GET_QUOTES, GET_QUOTES_SUCCESS, GET_QUOTES_FAIL,
+    GET_ITEMS_BY_ID, GET_ITEMS_BY_ID_FAIL, GET_ITEMS_BY_ID_SUCCESS,
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -21,6 +22,15 @@ export default (state  = INITIAL_STATE, action) => {
             return {...state, ...INITIAL_STATE, data: action.payload.data.results};
             
         case GET_ITEMS_FAIL:
+            return {...state, error: 'Loading Failed.', loading: false};
+
+        case GET_ITEMS_BY_ID:
+            return {...state, loading: true, error: ''};
+
+        case GET_ITEMS_BY_ID_SUCCESS:
+            return {...state, ...INITIAL_STATE, advItem: action.payload.data};
+            
+        case GET_ITEMS_BY_ID_FAIL:
             return {...state, error: 'Loading Failed.', loading: false};
 
         case GET_ORDER:

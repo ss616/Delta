@@ -10,8 +10,13 @@ import {
     TouchableOpacity,
 } from "react-native";
 
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 // External Library imports
-import { Container, Content, View, Card, Icon, Button} from 'native-base';
+import { Container, Content, View, Card, Button} from 'native-base';
+import { connect } from 'react-redux';
+
+import { signOut } from '../../../actions';
 
 // Local Imports
 import HomeScreenHeader from './HomeScreenHeader';
@@ -26,7 +31,7 @@ import viewSwitcher from './viewSwitcher';
 // import PostNewFab from './PostNewFab';
 import EQuoteCard from '../../reusables/EQuoteCard';
 
-export default class HomeScreen extends Component {
+class HomeScreen extends Component {
 
     static navigationOptions = ({ navigation }) => ({
         title: "Home",
@@ -49,8 +54,9 @@ export default class HomeScreen extends Component {
             <Container backgroundColor='white'>
                 
                 <HomeScreenHeader 
-                    leftIconName='ios-menu'
-                    onLeftButtonPress={() => this.props.navigation.openDrawer()}
+                    rightIconName='ios-log-out'
+                    leftIcon={<Icon name='triangle-outline' size={25} paddingTop={5} style={styles.gridIconContainerStyle} />}
+                    onRightButtonPress={() => this.props.signOut()}
                     searchPlaceholder={'What are you looking for?'}
                     color={primaryColor}
                 />
@@ -73,6 +79,11 @@ const styles = StyleSheet.create({
     eQuoteContainer: {
         justifyContent: 'flex-start',
         padding: 10,
+    },
+    gridIconContainerStyle:{ 
+        color: 'white', 
+        flexDirection: 'row', 
+        alignItems: 'center', 
     },
     recommendedContainer: {
         flex: 2,
@@ -112,4 +123,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
     }
 });
+
+export default connect(null, {signOut})(HomeScreen)
 

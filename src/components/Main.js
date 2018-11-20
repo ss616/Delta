@@ -17,7 +17,7 @@ import ItemDetailScreen from './screens/ItemDetailScreen/ItemDetailScreen';
 import OrderListScreen from './screens/OrderListScreen/OrderListScreen';
 import ItemListScreen from './screens/ItemListScreen/ItemListScreen';
 import { StyleProvider } from 'native-base';
-import { setPrimaryColor } from '../settings';
+import { setPrimaryColor, setList } from '../settings';
 import EQuoteListScreen from './screens/EQuoteListScreen/EQuoteListScreen';
 import UserListScreen from './screens/UserListScreen/UserListScreen';
 
@@ -96,6 +96,7 @@ class Main extends Component {
     // The response is an Object, so they're logged in and posted
     if (this.props.response){ 
       setPrimaryColor(this.props.response.data.primary_color) 
+      setList(this.props.response.data.recommendations)
       return <RootStack/>
     }
 

@@ -1,5 +1,5 @@
 import { POST_USER, POST_USER_FAIL, POST_USER_SUCCESS,
-            NAME_CHANGED, TYPE_CHANGED, LOC_CHANGED} from './types';
+            NAME_CHANGED, TYPE_CHANGED, LOC_CHANGED, SIGN_OUT} from './types';
 
 
 import axios from 'axios';
@@ -27,9 +27,15 @@ export const locChange = (text) => {
     };
 };
 
+export const signOut = () => {
+    return {
+        type: SIGN_OUT,
+        payload: null
+    };
+};
+
 export const postUser = (company_name, company_type, location) => {
     url=BASE_URL+'users/';
-    //console.log(user);
     
     return (dispatch) => {
         dispatch({
@@ -37,7 +43,7 @@ export const postUser = (company_name, company_type, location) => {
             });
         
         console.log(`Posting on Url=${url}`)
-        console.log({company_name: company_name, company_type: company_type})
+        console.log({company_name: company_name, company_type: company_type,location: location })
 
         axios.post(url, {company_name: company_name, company_type: company_type, location: location})
         .then(function (response) {
